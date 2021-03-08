@@ -165,7 +165,7 @@ Les signatures des fonctions du module `move-validation` suivent la même conven
 function colorPieceMove(board: Chessboard, move: Move): boolean
 ----
 
-Le paramètre `board` contient l'échiquier de la partie en cours et `move` contient le déplacement demandé par le joueur à travers le browser.
+Le paramètre `board` contient l'échiquier de la partie en cours et `move` contient le déplacement demandé par le joueur à travers le navigateur.
 Le paramètre `move` contient 2 coordonnées de type `Position`, représentant le début et la fin du déplacement.
 Les coordonnées indiquent *toujours* des cases à l'intérieur de l'échiquier, c'est à dire, une colonne entre `A` et `H` et une ligne entre `1` et `8`.
 Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à l'extérieur de l'échiquier.
@@ -173,21 +173,21 @@ Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à 
 Les tests unitaires de la fonction `blackPawnMove()` ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/pawn-move-validation-spec.ts`.
 *Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ces fichiers !* 
 
-Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. Observez le cycle de développement suivant:
+Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. Observez le cycle de développement suivant :
 
 . Implémentez une fonctionnalité simple.
 . Écrivez le ou les tests unitaires qui vérifient cette fonctionnalité.
 . Exécutez les tests pour vérifier que la fonctionnalité marche correctement et la non-régression.
 . Recommencez avec la fonctionnalité suivante.
 
-Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`, vous pouvez subdiviser leurs comportements en différentes fonctionnalités: 
+Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
 
 * Validation des mouvements horizontaux, verticaux et diagonaux, sans se préoccuper des autres pièces.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
 * Validation des mouvements (horizontaux, verticaux et diagonaux) qui se terminent sur une case contenant une pièce d'une couleur différente.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque toutes les cases intermédiaires ne sont pas vides.
 
-=== Exemple: validation des mouvements d'une Impératrice en plusieurs étapes
+=== Exemple: validation des mouvements d'une Tour en plusieurs étapes
 
 ==== Etape 1
 
