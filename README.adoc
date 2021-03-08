@@ -140,7 +140,7 @@ Le serveur traite alors la requête afin de jouer le coup demandé.
 
 La version actuelle permet le déplacement libre des pièces, sans respecter les règles des échecs.
 Pour l'instant, seuls les déplacements des pions sont validés.
-Vous devez mettre en oeuvre la validations des déplacements des autres pièces: le Roi, la Dame, le Cavalier, le Fou et la Tour. 
+Vous devez mettre en oeuvre la validation des déplacements des autres pièces: le Roi, la Dame, le Cavalier, le Fou et la Tour. 
 
 Le traitement des déplacements se fait de la façon suivante:
 
@@ -201,7 +201,7 @@ Commencez par la 1e fonctionnalité, la validation des déplacements horizontaux
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function empressMove(board: Chessboard, move: Move): boolean {
+export function rookMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank; // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
 }
 ----
@@ -210,7 +210,7 @@ export function empressMove(board: Chessboard, move: Move): boolean {
 
 [source,ts]
 ----
-// Dans le fichier "empress-move-validation.spec.ts"
+// Dans le fichier "rook-move-validation.spec.ts"
 let chessboard : Chessboard;
 
 export class TestRookMoves {
