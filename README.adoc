@@ -208,7 +208,7 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 // Dans le fichier "rook-move-validation.spec.ts"
 let chessboard : Chessboard;
 
-export class TestEmpressMoves {
+export class TestRookMoves {
     @Setup
     beforeEach(){
         chessboard = createEmptyChessboard();
@@ -249,7 +249,7 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
 [source,ts]
 ----
-// Dans le fichier "empress-move-validation.spec.ts"
+// Dans le fichier "rook-move-validation.spec.ts"
 export class TestRookMoves {
     // (...)
 

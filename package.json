@@ -4,10 +4,12 @@
     "version": "1.0.0",
     "main": "build/main.js",
     "scripts": {
+        "clean": "rimraf ./build/*",
+        "prebuild": "eslint",
         "build": "tsc",
         "dev": "ts-node-dev --respawn --transpileOnly ./src/main/ts/main.ts",
-        "serve": "tsc && node ./build/main.js",
-        "test": "./node_modules/.bin/alsatian ./build/test/ts/*.js || true"
+        "serve": "node ./build/main/ts/main.js",
+        "test": "alsatian ./src/test/ts/*.ts || true"
     },
     "keywords": [],
     "author": "Gerson Sunyé",
@@ -22,7 +24,15 @@
         "typescript": "^3.3.3"
     },
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.11.0",
+        "@typescript-eslint/parser": "^4.11.0",
         "alsatian": "^3.2.1",
+        "codelyzer": "^6.0.1",
+        "eslint": "^7.16.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-prettier": "^3.3.0",
+        "prettier": "^2.2.1",
+        "rimraf": "^3.0.2",
         "typescript": "^4.2.3"
     },
     "repository": {
