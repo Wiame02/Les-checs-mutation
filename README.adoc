@@ -135,7 +135,7 @@ Le serveur traite alors la requête afin de jouer le coup demandé.
 
 La version actuelle permet le déplacement libre des pièces, sans respecter les règles des échecs.
 Pour l'instant, seuls les déplacements des pions sont validés.
-Vous devez mettre en oeuvre la validations des déplacements des autres pièces: le Roi, la Dame, le Cavalier, le Fou et la Tour. 
+Vous devez mettre en oeuvre la validation des déplacements des autres pièces: le Roi, la Dame, le Cavalier, le Fou et la Tour. 
 
 Le traitement des déplacements se fait de la façon suivante:
 
