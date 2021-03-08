@@ -1,11 +1,11 @@
-= Gambit de la dame
+Gambit de la dame
 
-Ce projet consiste à déployer une application web de jeu d'échecs jouable en multijoueur.
+Ce projet consiste à déployer une application web de jeu d'échecs féeriques jouable en multijoueur.
 
 == Objectifs
 
 La fin du semestre approche, il est temps de montrer tout ce que vous avez appris et de proposer au monde entier votre première application web (webapp) !
-L'objectif de ce mini-projet est d'intégrer et adapter tout le travail réalisé lors des TP et TD précédents, afin de réaliser une application de jeu d'échecs jouable (et observable) en réseau.
+L'objectif de ce mini-projet est d'intégrer et adapter tout le travail réalisé lors des TP et TD précédents, afin de réaliser une application de jeu d'échecs jouable (et observable) en multijoueur réseau.
 
 
 == Préparation
@@ -75,20 +75,18 @@ Cela impliquera la mise à jour des vos divergences pour récupérer les changem
 Pour cela, vous devez faire:
 
 ```sh
-git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2020.git
-git fetch upstream
-git rebase upstream/master
+git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2020.git # pas besoin si déjà fait
+git pull upstream master
 ```
 
-* La première ligne ajoute le dépot originel et le nomme "upstream"
-* La deuxième ligne récupère les changements, sans les fusionner
-* La troisième ligne fusione les changements avec votre divergence
+* La première ligne ajoute le dépôt originel et le nomme "upstream"
+* La deuxième ligne récupère les changements et les fusionne avec votre divergence
 
 
 == Test et lancement
 
 * Le projet utilise l'outil de construction et de gestion de modules *npm*.
-* Pour lancer tous les tests unitaires du projet avec Alsatian, exécutez: `npm test`.
+* Pour lancer tous les tests unitaires du projet avec Alsatian, exécutez: `npm run test`.
 * Pour lancer le serveur en mode développement, exécutez: `npm run dev`.
 * Pour accéder à l'application, ouvrez l'URL suivante: http://localhost:8080.
 * Pour accéder au contenu JSON de l'échiquier en cours, utilisez l'URL suivante: http://localhost:8080/status.js.
@@ -102,12 +100,9 @@ Utilisez la notation par coordonnées, qui inclut la place à partir de laquelle
 |===
 |Coup |Coordonnées |Description 
 
-| 1. 
-| E2-E4 E7-E5 
-| Pion blanc en E2 se déplace à E4. Pion noir en E7 se déplace à E5.
-
+| 1. |E2-E4 E7-E5 |Pion blanc en E2 se déplace à E4. Pion noir en E7 se déplace à E5.
 | 2. 
-|G1-F4 B8-C5 
+|G1-F3 B8-C6
 |Cavalier  blanc en G1 se déplace à F3. Cavalier noir en B8 se déplace à C6.
 |===
 
@@ -176,7 +171,7 @@ Les coordonnées indiquent *toujours* des cases à l'intérieur de l'échiquier,
 Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à l'extérieur de l'échiquier.
 
 Les tests unitaires de la fonction `blackPawnMove()` ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/pawn-move-validation-spec.ts`.
-*Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ce fichier !* 
+*Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ces fichiers !* 
 
 Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. Observez le cycle de développement suivant:
 
@@ -185,10 +180,10 @@ Vous devez procéder par itérations successives, n'essayez pas d'implémenter l
 . Exécutez les tests pour vérifier que la fonctionnalité marche correctement et la non-régression.
 . Recommencez avec la fonctionnalité suivante.
 
-Par exemple, lorsque vous allez implémenter les fonctions qui valident le mouvement des Impératrices (`blackEmpressMove()` et `whiteEmpressMove()`) , vous pouvez subdiviser leurs comportements en différentes fonctionnalités: 
+Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`, vous pouvez subdiviser leurs comportements en différentes fonctionnalités: 
 
 * Validation des mouvements horizontaux, verticaux et diagonaux, sans se préoccuper des autres pièces.
-* Invalidation d'des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
+* Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
 * Validation des mouvements (horizontaux, verticaux et diagonaux) qui se terminent sur une case contenant une pièce d'une couleur différente.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque toutes les cases intermédiaires ne sont pas vides.
 
@@ -201,7 +196,7 @@ Commencez par la 1e fonctionnalité, la validation des déplacements horizontaux
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function empressMove(board: Chessboard, move: Move): boolean {
+export function rookMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank; // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
 }
 ----
@@ -210,10 +205,10 @@ export function empressMove(board: Chessboard, move: Move): boolean {
 
 [source,ts]
 ----
-// Dans le fichier "empress-move-validation.spec.ts"
+// Dans le fichier "rook-move-validation.spec.ts"
 let chessboard : Chessboard;
 
-export class TestRookMoves {
+export class TestEmpressMoves {
     @Setup
     beforeEach(){
         chessboard = createEmptyChessboard();
@@ -221,10 +216,10 @@ export class TestRookMoves {
         // La variable "positionE4" a été créée au début du module pour simplifier le code des tests
         // Place une Tour sur la case E4 d'un échiquier vide:
 
-        putPiece(chessboard, positionE4, pieces.blackEmpress);
+        putPiece(chessboard, positionE4, pieces.blackRook);
     }
 
-    @Test("A Rook can move horizontally")
+    @Test("A rook can move horizontally")
     testCanMoveHorizontally() {
         // Les variable "moveE4_H4" et "moveE4_14" ont été créées au début 
         // du module pour simplifier le code des tests.
@@ -274,9 +269,9 @@ Suivez la même démarche pour implémenter et tester les autres fonctionnalité
 
 Pour rendre le projet, il vous suffit de vous assurer d'avoir :
 
-- bien effectué tous les _commits_ et _pushs_ nécessaires avec `git`,
+- bien effectué toutes les validations (_commits_) et publications (_pushs_) nécessaires avec `git`,
 - bien ajouté *Naobot* comme membre _Reporter_ de votre projet,
-- bien commité et pushé tous vos changements et fichiers de travail.
+- bien validé (_commit_) et publié (_push_) tous vos changements et fichiers de travail.
 
 Si vous le souhaitez, vous pouvez également ajouter un fichier "`RENDU.md`" à la racine du projet, afin de décrire les spécificités de votre projet (choix techniques, parties non traitées, extensions non demandées, etc.).
 
@@ -290,4 +285,4 @@ Tant que tout cela est bien fait avant la date limite de rendu, alors tout est b
 
 * Écrivez les tests unitaires avant ou en même temps que les fonctions. Ne les laissez pas pour la fin, les test unitaires sont très utiles pendant le développement et vous feront gagner du temps.
 
-* Faites bon usage de `git` : effectuez des _commits_ et des _pushs_ régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
+* Faites bon usage de `git` : effectuez des validations (_commits_) et des publications (_pushs_) régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
