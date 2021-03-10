@@ -15,7 +15,11 @@ https://gitlab.univ-nantes.fr/naomod/idl/projet-2020/-/forks/new
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
 .. Dans "_Paramètres → Général_", allez dans "_Visibility, project features, permissions_", et mettez "_Project visibility_" à "_Private_".
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
+.. Toujours dans "_Paramètres → Général_", enregistrez ceci comme description du projet : `l4o3SLlfb9DJKhyK2UCagT0zw`. 
+Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 ..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
+Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
+..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Developer_".
 Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
 . Créez et configurez une copie locale du projet. Ouvrez le *Terminal* et exécutez les commandes suivantes:
 +
