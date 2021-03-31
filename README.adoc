@@ -219,7 +219,7 @@ export class TestRookMoves {
         // La variable "positionE4" a été créée au début du module pour simplifier le code des tests
         // Place une Tour sur la case E4 d'un échiquier vide:
 
-        putPiece(chessboard, positionE4, pieces.blackRook);
+        putPiece(chessboard, positionE4, pieces.whiteRook);
     }
 
     @Test("A rook can move horizontally")
