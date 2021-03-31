@@ -19,7 +19,7 @@ Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code sour
 Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 ..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
 Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
-..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Developer_".
+..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
 . Créez et configurez une copie locale du projet. Ouvrez le *Terminal* et exécutez les commandes suivantes:
 +
 [source,bash]
