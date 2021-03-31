@@ -93,11 +93,11 @@ export function createInitialChessboard(): Chessboard {
     putPieceAtCoordinate(chessboard, 5, 0, pieces.whiteBishop);
     putPieceAtCoordinate(chessboard, 5, 7, pieces.blackBishop);
 
-    // Rooks
-    putPieceAtCoordinate(chessboard, 1, 0, pieces.whiteRook);
-    putPieceAtCoordinate(chessboard, 1, 7, pieces.blackRook);
-    putPieceAtCoordinate(chessboard, 6, 0, pieces.whiteRook);
-    putPieceAtCoordinate(chessboard, 6, 7, pieces.blackRook);
+    // Knights
+    putPieceAtCoordinate(chessboard, 1, 0, pieces.whiteKnight);
+    putPieceAtCoordinate(chessboard, 1, 7, pieces.blackKnight);
+    putPieceAtCoordinate(chessboard, 6, 0, pieces.whiteKnight);
+    putPieceAtCoordinate(chessboard, 6, 7, pieces.blackKnight);
 
     // Rooks
     putPieceAtCoordinate(chessboard, 0, 0, pieces.whiteRook);
