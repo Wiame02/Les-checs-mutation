@@ -270,11 +270,8 @@ Suivez la même démarche pour implémenter et tester les autres fonctionnalité
 
 === Rendu
 
-Pour rendre le projet, il vous suffit de vous assurer d'avoir :
-
-- bien effectué toutes les validations (_commits_) et publications (_pushs_) nécessaires avec `git`,
-- bien ajouté *Naobot* comme membre _Reporter_ de votre projet,
-- bien validé (_commit_) et publié (_push_) tous vos changements et fichiers de travail.
+Pour rendre le projet, il vous suffit de vous assurer d'avoir parfaitement bien suivi ce qui est demandé dans la partie "Préparation" au début de ce document, et d'avoir bien validé (_commit_) et publié (_push_) tous vos changements et fichiers de travail.
+Nous vous encourageons à vérifier plusieurs fois que tout a bien été fait exactement comme demandé, autrement nous ne pourrons pas avoir accès à vos projets pour les corriger.
 
 Si vous le souhaitez, vous pouvez également ajouter un fichier "`RENDU.md`" à la racine du projet, afin de décrire les spécificités de votre projet (choix techniques, parties non traitées, extensions non demandées, etc.).
 
