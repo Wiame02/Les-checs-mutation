@@ -5,59 +5,49 @@ let chessboard: Chessboard;
 
 export class TestKnightMoves {
     @Setup
-    beforeEach() {
+    beforeEach(): void {
         // TODO:
-        // Initialize an empty chessboard
-        // Place a white Knight on E4
     }
 
     @Test('A Knight can move two squares horizontally and one square vertically')
-    testCanMoveThreeHorizontalAndOneVertical() {
+    testCanMoveThreeHorizontalAndOneVertical(): void {
         // TODO:
         // Check the following moves are possible:
-        // - moveE4_G3
-        // - moveE4_G5
-        // - moveE4_C3
-        // - moveE4_C5
+
     }
 
     @Test('A Knight can move two squares vertically and one square horizontally')
-    testCanMoveThreeVerticalAndOneHorizontal() {
+    testCanMoveThreeVerticalAndOneHorizontal(): void {
         // TODO:
-        // Check the following moves are possible:
-        // - moveE4_F2
-        // - moveE4_F6
-        // - moveE4_D2
-        // - moveE4_D6
     }
 
     @Test('A Knight can leap other pieces')
-    testCanLeapOtherPieces() {
+    testCanLeapOtherPieces(): void {
         // TODO:
     }
 
     @Test('A Knight cannot move diagonally')
-    testCannotMoveDiagonally() {
+    testCannotMoveDiagonally(): void {
         // TODO:
     }
 
     @Test('A Knight cannot move horizontally')
-    testCannotMoveHorizontally() {
+    testCannotMoveHorizontally(): void {
         // TODO:
     }
 
     @Test('A Knight cannot move vertically')
-    testCannotMoveVertically() {
+    testCannotMoveVertically(): void {
         // TODO:
     }
 
     @Test('A Knight can capture a piece from another color')
-    testCanCaptureAnotherColor() {
+    testCanCaptureAnotherColor(): void {
         // TODO:
     }
 
     @Test('A Knight cannot capture a piece from the same color')
-    testCannotCaptureSameColor() {
+    testCannotCaptureSameColor(): void {
         // TODO:
     }
 }

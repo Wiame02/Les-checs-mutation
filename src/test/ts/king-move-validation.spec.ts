@@ -5,35 +5,27 @@ let chessboard: Chessboard;
 
 export class TestKingMoves {
     @Setup
-    beforeEach() {
+    beforeEach(): void {
         // TODO:
-        // Initialize an empty chessboard
-        // Place a black King on E4
     }
 
     @Test('A King can move 1 square in all directions')
-    testCanMoveOneSquare() {
+    testCanMoveOneSquare(): void {
         // TODO:
-        // Check it can move to squares D3, D4, D5, E3, E5, F3, F4, and F5
     }
 
     @Test('A King cannot move more than 1 square')
-    testCannotMoveMoreThanOneSquare() {
+    testCannotMoveMoreThanOneSquare(): void {
         // TODO:
-        // Check it cannot move to squares C2, C3, C4, C6, E2, E6, G2, G4, and G6
     }
 
     @Test('A King cannot capure pieces from the same color')
-    testCannotCaptureSameColor() {
+    testCannotCaptureSameColor(): void {
         // TODO:
-        // Place a black Pawn on E5
-        // Check the King cannot move to E5.
     }
 
     @Test('A King can capure pieces from a different color')
-    testCanCaptureSameColor() {
+    testCanCaptureSameColor(): void {
         // TODO:
-        // Place a white Pawn on E5
-        // Check the King can move to E5.
     }
 }

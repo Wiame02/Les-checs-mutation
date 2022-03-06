@@ -5,56 +5,43 @@ let chessboard: Chessboard;
 
 export class TestRookMoves {
     @Setup
-    beforeEach() {
+    beforeEach(): void {
         // TODO:
         // Initialize an empty chessboard
-        // Place a white Rook on E4
     }
 
     @Test('An Rook can move horizontally')
-    testCanMoveHorizontally() {
+    testCanMoveHorizontally(): void {
         // TODO:
-        // Check the following moves are possible: moveE4_H4, moveE4_A4
     }
 
     @Test('A Rook can move vertically')
-    testCanMoveVertically() {
+    testCanMoveVertically(): void {
         // TODO:
-        // Check the following moves are possible: moveE4_E1, moveE4_E8
     }
 
     @Test('A Rook cannot move diagonally')
-    testCannotMoveDiagonally() {
+    testCannotMoveDiagonally(): void {
         // TODO:
-        // Check the following moves are impossible:
-        // moveE4_A8, moveE4_B1, moveE4_H7, moveE4_H1
     }
 
     @Test('A Rook can capture a piece from different color')
-    testCanCaptureDifferentColor() {
+    testCanCaptureDifferentColor(): void {
         // TODO:
-        // Place a black Pawn on H4
-        // Check the move moveE4_H4 is possible
     }
 
     @Test('A Rook cannot capture a piece from the same color')
-    testCannotCaptureSameColor() {
+    testCannotCaptureSameColor(): void {
         // TODO:
-        // Place a white Pawn on H4
-        // Check the move moveE4_H4 is impossible
     }
 
     @Test('A Rook cannot leap other pieces, when moving horizontally')
-    testCannotLeapHorizontally() {
+    testCannotLeapHorizontally(): void {
         // TODO:
-        // Place a black Pawn on F4
-        // Check the move moveE4_H4 is impossible
     }
 
     @Test('A Rook cannot leap other pieces, when moving vertically')
-    testCannotLeapvertically() {
+    testCannotLeapvertically(): void {
         // TODO:
-        // Place a black Pawn on E3
-        // Check the move moveE4_E1 is impossible
     }
 }

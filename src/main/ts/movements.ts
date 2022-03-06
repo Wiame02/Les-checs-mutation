@@ -4,17 +4,18 @@
 
 import { Chessboard, squareAtPosition, Square } from './chessboard';
 import { Position } from './position';
+import * as position from './position';
 import * as pieces from './piece';
 import { Piece } from './piece';
 import * as isPossible from './move-validation';
 
 const VALID_MOVE_STRING = new RegExp('([a-h]|[A-H])([1-8])-([A-H]|[a-h])([1-8])');
 
-export interface Move {
+export type Move = {
     isValid: boolean;
     from?: Position;
     to?: Position;
-}
+};
 
 /**
  * Creates a new Move from two Positions, representing
@@ -24,8 +25,7 @@ export interface Move {
  * @param to The final position
  */
 export function move(from: Position, to: Position): Move {
-    const move: Move = { from: from, to: to, isValid: true };
-    return move;
+    return { from: from, to: to, isValid: true };
 }
 
 /**
@@ -38,10 +38,10 @@ export function move(from: Position, to: Position): Move {
  * @returns true, if the move is valid and possible
  */
 export function processMove(chessboard: Chessboard, moveString: string): boolean {
-    const move: Move = parseMoveString(moveString);
+    const movement: Move = parseMoveString(moveString);
 
-    if (move.isValid && isMovePossible(chessboard, move)) {
-        performMove(chessboard, move);
+    if (movement.isValid && isMovePossible(chessboard, movement)) {
+        performMove(chessboard, movement);
     } else {
         console.log('Invalid movement !');
         return false;
@@ -79,49 +79,49 @@ export function parseMoveString(movementString: string): Move {
 /**
  * Checks whether a move is possible in the given chessboard
  * @param chessboard
- * @param move
+ * @param movement
  */
-function isMovePossible(chessboard: Chessboard, move: Move): boolean {
-    const square: Square = squareAtPosition(chessboard, move.from!);
+function isMovePossible(chessboard: Chessboard, movement: Move): boolean {
+    const square: Square = squareAtPosition(chessboard, movement.from!);
     if (square.isEmpty) {
         return false;
     }
-
     const piece: Piece = square.piece!;
+    const current: Position = movement.from!;
 
-    switch (piece) {
-        case pieces.whitePawn:
-            return isPossible.whitePawnMove(chessboard, move);
-        case pieces.blackPawn:
-            return isPossible.blackPawnMove(chessboard, move);
-        case pieces.whiteKing:
-            return isPossible.kingMove(chessboard, move);
-        case pieces.whiteQueen:
-            return isPossible.queenMove(chessboard, move);
-        case pieces.whiteBishop:
-            return isPossible.bishopMove(chessboard, move);
-        case pieces.whiteKnight:
-            return isPossible.knightMove(chessboard, move);
-        case pieces.whiteRook:
-            return isPossible.rookMove(chessboard, move);
-        case pieces.blackKing:
-            return isPossible.kingMove(chessboard, move);
-        case pieces.blackQueen:
-            return isPossible.queenMove(chessboard, move);
-        case pieces.blackBishop:
-            return isPossible.bishopMove(chessboard, move);
-        case pieces.blackKnight:
-            return isPossible.knightMove(chessboard, move);
-        case pieces.blackRook:
-            return isPossible.rookMove(chessboard, move);
+    if (piece === pieces.blackKing || piece === pieces.whiteKing) {
+        return isPossible.kingMove(chessboard, movement);
     }
 
+    if (position.isBishopPosition(current)) {
+        return isPossible.bishopMove(chessboard, movement);
+    }
+
+    if (position.isKnightPosition(current)) {
+        return isPossible.knightMove(chessboard, movement);
+    }
+
+    if (position.isQueenPosition(current)) {
+        return isPossible.queenMove(chessboard, movement);
+    }
+
+    if (position.isRookPosition(current)) {
+        return isPossible.rookMove(chessboard, movement);
+    }
+
+    if (position.isPawnPosition(current)) {
+        if (piece.isWhite) {
+            return isPossible.whitePawnMove(chessboard, movement);
+        } else {
+            return isPossible.blackPawnMove(chessboard, movement);
+        }
+    }
     return false;
 }
 
-function performMove(board: Chessboard, move: Move) {
-    const source: Square = squareAtPosition(board, move.from!);
-    const destination: Square = squareAtPosition(board, move.to!);
+function performMove(board: Chessboard, movement: Move) {
+    const source: Square = squareAtPosition(board, movement.from!);
+    const destination: Square = squareAtPosition(board, movement.to!);
 
     destination.piece = source.piece;
     destination.isEmpty = false;

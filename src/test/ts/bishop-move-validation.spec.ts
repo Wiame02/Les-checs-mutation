@@ -5,49 +5,39 @@ let chessboard: Chessboard;
 
 export class TestBishopMoves {
     @Setup
-    beforeEach() {
+    beforeEach(): void {
         // TODO:
         // Initialize an empty chessboard
         // Place a black Bishop on E4
     }
 
     @Test('A Bishop can move diagonally')
-    testCanMoveDiagonally() {
+    testCanMoveDiagonally(): void {
         // TODO:
-        // Check the following moves are possible:
-        // moveE4_A8, moveE4_B1, moveE4_H7, moveE4_H1
     }
 
     @Test('A Bishop cannot move horizontally')
-    testCannotMoveHorizontally() {
+    testCannotMoveHorizontally(): void {
         // TODO:
-        // Check the following moves are impossible: moveE4_H4, moveE4_A4
     }
 
     @Test('A Bishop cannot move vertically')
-    testCannotMoveVertically() {
+    testCannotMoveVertically(): void {
         // TODO:
-        // Check the following moves are impossible: moveE4_E1, moveE4_E8
     }
 
     @Test('A Bishop can capture a piece from another color')
-    testCanCaptureDifferentColor() {
+    testCanCaptureDifferentColor(): void {
         // TODO:
-        // Place a white Pawn on A8
-        // Check the move moveE4_A8 is possible
     }
 
     @Test('A Bishop cannot capture a piece from the same color')
-    testCannotCaptureSameColor() {
+    testCannotCaptureSameColor(): void {
         // TODO:
-        // Place a black Pawn on A8
-        // Check the move moveE4_A8 is impossible
     }
 
     @Test('A Bishop cannot leap other pieces')
-    testCannotLeapDiagonally() {
+    testCannotLeapDiagonally(): void {
         // TODO:
-        // Place a white Pawn on C6
-        // Check the move moveE4_A8 is impossible
     }
 }

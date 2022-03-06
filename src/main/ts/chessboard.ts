@@ -37,17 +37,17 @@ export function emptyfile(chessboard: Chessboard, move: Move): boolean {
     return i === end;
 }
 
-export interface Square {
+export type Square = {
     position: Position;
     isEmpty: boolean;
     piece?: Piece;
-}
+};
 
-export interface Chessboard {
+export type Chessboard = {
     board: Array<Array<Square>>;
     nbCoups: number; //nombre de coups joués
     historique: Array<Move>; //historique des coups (optionnel)
-}
+};
 
 export function squareAtPosition(chessboard: Chessboard, position: Position): Square {
     const square: Square = chessboard.board[position.file][position.rank];
@@ -73,37 +73,17 @@ export function createInitialChessboard(): Chessboard {
         }
     }
 
-    // Pawns in ranks 2 and 6
-    let position: Position;
-    let square: Square;
+    // Pawns
     for (let col = 0; col < 8; col++) {
         putPieceAtCoordinate(chessboard, col, 1, pieces.whitePawn);
+        putPieceAtCoordinate(chessboard, col, 0, pieces.whitePawn);
         putPieceAtCoordinate(chessboard, col, 6, pieces.blackPawn);
+        putPieceAtCoordinate(chessboard, col, 7, pieces.blackPawn);
     }
 
-    // Kings and Queens
+    // Kings
     putPieceAtCoordinate(chessboard, 4, 0, pieces.whiteKing);
     putPieceAtCoordinate(chessboard, 4, 7, pieces.blackKing);
-    putPieceAtCoordinate(chessboard, 3, 0, pieces.whiteQueen);
-    putPieceAtCoordinate(chessboard, 3, 7, pieces.blackQueen);
-
-    // Bishops
-    putPieceAtCoordinate(chessboard, 2, 0, pieces.whiteBishop);
-    putPieceAtCoordinate(chessboard, 2, 7, pieces.blackBishop);
-    putPieceAtCoordinate(chessboard, 5, 0, pieces.whiteBishop);
-    putPieceAtCoordinate(chessboard, 5, 7, pieces.blackBishop);
-
-    // Knights
-    putPieceAtCoordinate(chessboard, 1, 0, pieces.whiteKnight);
-    putPieceAtCoordinate(chessboard, 1, 7, pieces.blackKnight);
-    putPieceAtCoordinate(chessboard, 6, 0, pieces.whiteKnight);
-    putPieceAtCoordinate(chessboard, 6, 7, pieces.blackKnight);
-
-    // Rooks
-    putPieceAtCoordinate(chessboard, 0, 0, pieces.whiteRook);
-    putPieceAtCoordinate(chessboard, 0, 7, pieces.blackRook);
-    putPieceAtCoordinate(chessboard, 7, 0, pieces.whiteRook);
-    putPieceAtCoordinate(chessboard, 7, 7, pieces.blackRook);
 
     return chessboard;
 }
