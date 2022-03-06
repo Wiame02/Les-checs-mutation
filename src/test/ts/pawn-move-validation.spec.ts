@@ -46,7 +46,7 @@ export class TestBlackPawnMoves {
     @Test('Pawns cannot capture an empty square ')
     testPawnCannotCaptureEmptySquare(): void {
         putPiece(chessboard, position.A7, pieces.blackPawn);
-        Expect(isPossible.blackPawnMove(chessboard, move.A7_A6)).not.toBeTruthy();
+        Expect(isPossible.blackPawnMove(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
     @Test('Pawns cannot capture pieces of the same color')
