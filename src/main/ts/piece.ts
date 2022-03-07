@@ -8,6 +8,7 @@ export type Piece = {
     name: string;
 };
 
+export const NULL_PIECE: Piece = { symbol: '', name: 'Null', isWhite: false }
 export const whitePawn: Piece = { symbol: '♙', name: 'White Pawn', isWhite: true };
 export const whiteKing: Piece = { symbol: '♔', name: 'White King', isWhite: true };
 export const blackPawn: Piece = { symbol: '♟', name: 'Black Pawn', isWhite: false };

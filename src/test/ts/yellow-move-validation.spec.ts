@@ -3,50 +3,48 @@ import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chess
 
 let chessboard: Chessboard;
 
-export class TestKnightMoves {
+export class TestPawnInYellowCaseMoves {
     @Setup
     beforeEach(): void {
         // TODO:
     }
 
-    @Test('A Knight can move two squares horizontally and one square vertically')
+    @Test('In a yellow case, a Pawn can move two squares horizontally and one square vertically')
     testCanMoveThreeHorizontalAndOneVertical(): void {
         // TODO:
-        // Check the following moves are possible:
-
     }
 
-    @Test('A Knight can move two squares vertically and one square horizontally')
+    @Test('In a yellow case, a Pawn can move two squares vertically and one square horizontally')
     testCanMoveThreeVerticalAndOneHorizontal(): void {
         // TODO:
     }
 
-    @Test('A Knight can leap other pieces')
+    @Test('In a yellow case, a Pawn can leap other pieces')
     testCanLeapOtherPieces(): void {
         // TODO:
     }
 
-    @Test('A Knight cannot move diagonally')
+    @Test('In a yellow case, a Pawn cannot move diagonally')
     testCannotMoveDiagonally(): void {
         // TODO:
     }
 
-    @Test('A Knight cannot move horizontally')
+    @Test('In a yellow case, a Pawn cannot move horizontally')
     testCannotMoveHorizontally(): void {
         // TODO:
     }
 
-    @Test('A Knight cannot move vertically')
+    @Test('In a yellow case, a Pawn cannot move vertically')
     testCannotMoveVertically(): void {
         // TODO:
     }
 
-    @Test('A Knight can capture a piece from another color')
+    @Test('In a yellow case, a Pawn can capture a piece from another color')
     testCanCaptureAnotherColor(): void {
         // TODO:
     }
 
-    @Test('A Knight cannot capture a piece from the same color')
+    @Test('In a yellow case, a Pawn cannot capture a piece from the same color')
     testCannotCaptureSameColor(): void {
         // TODO:
     }

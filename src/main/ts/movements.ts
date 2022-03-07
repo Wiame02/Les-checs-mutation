@@ -13,8 +13,8 @@ const VALID_MOVE_STRING = new RegExp('([a-h]|[A-H])([1-8])-([A-H]|[a-h])([1-8])'
 
 export type Move = {
     isValid: boolean;
-    from?: Position;
-    to?: Position;
+    from: Position;
+    to: Position;
 };
 
 /**
@@ -32,7 +32,7 @@ export function move(from: Position, to: Position): Move {
  * Processes a move received from a client browser.
  * If the move is valid and possible, the move is performed and this function
  * returns true. Otherwise, it returns false
- *
+ * 
  * @param chessboard The chessboard for the current game
  * @param moveString The string received from the client containing a move
  * @returns true, if the move is valid and possible
@@ -58,7 +58,7 @@ export function processMove(chessboard: Chessboard, moveString: string): boolean
 export function parseMoveString(movementString: string): Move {
     let newMove: Move;
     if (movementString.length != 5 || !movementString.match(VALID_MOVE_STRING)) {
-        const invalidMove: Move = { isValid: false };
+        const invalidMove: Move = { isValid: false, from: position.NULL_POSITION, to: position.NULL_POSITION };
         newMove = invalidMove;
     } else {
         const fromFile: number = movementString.charCodeAt(0);
@@ -86,42 +86,42 @@ function isMovePossible(chessboard: Chessboard, movement: Move): boolean {
     if (square.isEmpty) {
         return false;
     }
-    const piece: Piece = square.piece!;
-    const current: Position = movement.from!;
+    const piece: Piece = square.piece;
+    const current: Position = movement.from;
 
     if (piece === pieces.blackKing || piece === pieces.whiteKing) {
         return isPossible.kingMove(chessboard, movement);
     }
 
     if (position.isBishopPosition(current)) {
-        return isPossible.bishopMove(chessboard, movement);
+        return isPossible.pawnInBlueCaseMove(chessboard, movement);
     }
 
     if (position.isKnightPosition(current)) {
-        return isPossible.knightMove(chessboard, movement);
+        return isPossible.pawnInYellowCaseMove(chessboard, movement);
     }
 
     if (position.isQueenPosition(current)) {
-        return isPossible.queenMove(chessboard, movement);
+        return isPossible.pawnInGreyCaseMove(chessboard, movement);
     }
 
     if (position.isRookPosition(current)) {
-        return isPossible.rookMove(chessboard, movement);
+        return isPossible.pawnInRedCaseMove(chessboard, movement);
     }
 
     if (position.isPawnPosition(current)) {
         if (piece.isWhite) {
-            return isPossible.whitePawnMove(chessboard, movement);
+            return isPossible.whitePawnInWhiteCaseMove(chessboard, movement);
         } else {
-            return isPossible.blackPawnMove(chessboard, movement);
+            return isPossible.blackPawnInWhiteCaseMove(chessboard, movement);
         }
     }
     return false;
 }
 
 function performMove(board: Chessboard, movement: Move) {
-    const source: Square = squareAtPosition(board, movement.from!);
-    const destination: Square = squareAtPosition(board, movement.to!);
+    const source: Square = squareAtPosition(board, movement.from);
+    const destination: Square = squareAtPosition(board, movement.to);
 
     destination.piece = source.piece;
     destination.isEmpty = false;

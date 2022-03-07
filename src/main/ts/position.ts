@@ -57,10 +57,12 @@ export function isKnightPosition(pos: Position): boolean {
 export function isBishopPosition(pos: Position): boolean {
     return BISHOP_POSITIONS.includes(pos);
 }
- 
+
 export function isQueenPosition(pos: Position): boolean {
     return QUEEN_POSITIONS.includes(pos);
 }
+
+export const NULL_POSITION = position(-1, -1);
 
 export const A1: Position = position(0, 0); // A1
 export const A2: Position = position(0, 1); // A2

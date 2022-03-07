@@ -3,40 +3,40 @@ import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chess
 
 let chessboard: Chessboard;
 
-export class TestBishopMoves {
+export class TestPawnMovesInBlueCases {
     @Setup
     beforeEach(): void {
         // TODO:
         // Initialize an empty chessboard
-        // Place a black Bishop on E4
+        // Place a black Pawn on E4
     }
 
-    @Test('A Bishop can move diagonally')
+    @Test('In a blue case, a Pawn can move diagonally')
     testCanMoveDiagonally(): void {
         // TODO:
     }
 
-    @Test('A Bishop cannot move horizontally')
+    @Test('In a blue case, a Pawn cannot move horizontally')
     testCannotMoveHorizontally(): void {
         // TODO:
     }
 
-    @Test('A Bishop cannot move vertically')
+    @Test('In a blue case, a Pawn cannot move vertically')
     testCannotMoveVertically(): void {
         // TODO:
     }
 
-    @Test('A Bishop can capture a piece from another color')
+    @Test('In a blue case, a Pawn can capture a piece from another color')
     testCanCaptureDifferentColor(): void {
         // TODO:
     }
 
-    @Test('A Bishop cannot capture a piece from the same color')
+    @Test('In a blue case, a Pawn cannot capture a piece from the same color')
     testCannotCaptureSameColor(): void {
         // TODO:
     }
 
-    @Test('A Bishop cannot leap other pieces')
+    @Test('In a blue case, a Pawn cannot leap other pieces')
     testCannotLeapDiagonally(): void {
         // TODO:
     }

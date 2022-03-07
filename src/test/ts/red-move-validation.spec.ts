@@ -3,44 +3,44 @@ import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chess
 
 let chessboard: Chessboard;
 
-export class TestRookMoves {
+export class TestPawnInRedCaseMoves {
     @Setup
     beforeEach(): void {
         // TODO:
         // Initialize an empty chessboard
     }
 
-    @Test('An Rook can move horizontally')
+    @Test('In a red case, a Pawn can move horizontally')
     testCanMoveHorizontally(): void {
         // TODO:
     }
 
-    @Test('A Rook can move vertically')
+    @Test('In a red case, a Pawn can move vertically')
     testCanMoveVertically(): void {
         // TODO:
     }
 
-    @Test('A Rook cannot move diagonally')
+    @Test('In a red case, a Pawn cannot move diagonally')
     testCannotMoveDiagonally(): void {
         // TODO:
     }
 
-    @Test('A Rook can capture a piece from different color')
+    @Test('In a red case, a Pawn can capture a piece from different color')
     testCanCaptureDifferentColor(): void {
         // TODO:
     }
 
-    @Test('A Rook cannot capture a piece from the same color')
+    @Test('In a red case, a Pawn cannot capture a piece from the same color')
     testCannotCaptureSameColor(): void {
         // TODO:
     }
 
-    @Test('A Rook cannot leap other pieces, when moving horizontally')
+    @Test('In a red case, a Pawn cannot leap other pieces, when moving horizontally')
     testCannotLeapHorizontally(): void {
         // TODO:
     }
 
-    @Test('A Rook cannot leap other pieces, when moving vertically')
+    @Test('In a red case, a Pawn cannot leap other pieces, when moving vertically')
     testCannotLeapvertically(): void {
         // TODO:
     }

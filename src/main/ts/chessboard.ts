@@ -14,19 +14,19 @@ export function isEmpty(chessboard: Chessboard, position: Position): boolean {
 export function emptyfile(chessboard: Chessboard, move: Move): boolean {
     let start: number;
     let end: number;
-    const file: number = move.from!.file;
+    const file: number = move.from.file;
 
-    if (file !== move.to!.file) {
+    if (file !== move.to.file) {
         //should not happen
         return false;
     }
 
-    if (move.from!.rank > move.to!.rank) {
-        start = move.to!.rank;
-        end = move.from!.rank;
+    if (move.from.rank > move.to.rank) {
+        start = move.to.rank;
+        end = move.from.rank;
     } else {
-        end = move.to!.rank;
-        start = move.from!.rank;
+        end = move.to.rank;
+        start = move.from.rank;
     }
 
     let i: number = start;
@@ -40,7 +40,7 @@ export function emptyfile(chessboard: Chessboard, move: Move): boolean {
 export type Square = {
     position: Position;
     isEmpty: boolean;
-    piece?: Piece;
+    piece: Piece;
 };
 
 export type Chessboard = {
@@ -57,7 +57,7 @@ export function squareAtPosition(chessboard: Chessboard, position: Position): Sq
 
 export function pieceAtPosition(chessboard: Chessboard, position: Position): Piece {
     const square: Square = squareAtPosition(chessboard, position);
-    return square.piece!;
+    return square.piece;
 }
 
 /** Retourne un échiquier initialisé en début de partie **/
@@ -68,7 +68,7 @@ export function createInitialChessboard(): Chessboard {
     for (let rank = 2; rank < 6; rank++) {
         for (let col = 0; col < 8; col++) {
             const position: Position = { rank: rank, file: col };
-            const square: Square = { position: position, isEmpty: true };
+            const square: Square = { position: position, isEmpty: true, piece: pieces.NULL_PIECE };
             chessboard.board[col][rank] = square;
         }
     }
@@ -94,7 +94,7 @@ export function createEmptyChessboard(): Chessboard {
     for (let rank = 0; rank < 8; rank++) {
         for (let col = 0; col < 8; col++) {
             const position: Position = { rank: rank, file: col };
-            const square: Square = { position: position, isEmpty: true };
+            const square: Square = { position: position, isEmpty: true, piece: pieces.NULL_PIECE };
             newChessboard.board[col][rank] = square;
         }
     }
