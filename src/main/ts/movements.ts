@@ -1,7 +1,3 @@
-/**
- * NE PAS MODIFIER CE FICHIER
- */
-
 import { Chessboard, squareAtPosition, Square } from './chessboard';
 import { Position } from './position';
 import * as position from './position';
@@ -81,8 +77,8 @@ export function parseMoveString(movementString: string): Move {
  * @param chessboard
  * @param movement
  */
-function isMovePossible(chessboard: Chessboard, movement: Move): boolean {
-    const square: Square = squareAtPosition(chessboard, movement.from!);
+export function isMovePossible(chessboard: Chessboard, movement: Move): boolean {
+    const square: Square = squareAtPosition(chessboard, movement.from);
     if (square.isEmpty) {
         return false;
     }
@@ -93,29 +89,17 @@ function isMovePossible(chessboard: Chessboard, movement: Move): boolean {
         return isPossible.kingMove(chessboard, movement);
     }
 
-    if (position.isBishopPosition(current)) {
-        return isPossible.pawnInBlueCaseMove(chessboard, movement);
-    }
-
-    if (position.isKnightPosition(current)) {
-        return isPossible.pawnInYellowCaseMove(chessboard, movement);
-    }
-
-    if (position.isQueenPosition(current)) {
-        return isPossible.pawnInGreyCaseMove(chessboard, movement);
-    }
-
-    if (position.isRookPosition(current)) {
-        return isPossible.pawnInRedCaseMove(chessboard, movement);
-    }
-
-    if (position.isPawnPosition(current)) {
+    if (position.isWhitePosition(current)) {
         if (piece.isWhite) {
             return isPossible.whitePawnInWhiteCaseMove(chessboard, movement);
         } else {
             return isPossible.blackPawnInWhiteCaseMove(chessboard, movement);
         }
     }
+    // TODO: Red position
+    // TODO: Yellow position
+    // TODO: Blue position
+    // TODO: Grey position
     return false;
 }
 
