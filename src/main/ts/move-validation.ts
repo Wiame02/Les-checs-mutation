@@ -95,7 +95,7 @@ export function pawnInGreyCaseMove(board: Chessboard, move: Move): boolean {
 }
 
 /**
- * Checks whether a Rook in a red case can perform a given move.
+ * Checks whether a Pawn in a red case can perform a given move.
  * In a red case, the Pawn moves like a Rook in classic chess.
  * That is, it can move any number of squares along a rank or file,
  * but cannot leap over other pieces.

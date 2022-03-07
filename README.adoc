@@ -312,7 +312,7 @@ export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
 
 [source,ts]
 ----
-// Dans le fichier "rook-move-validation.spec.ts"
+// Dans le fichier "red-move-validation.spec.ts"
 export class TestPawnInRedCaseMoves {
     // (...)
 
