@@ -29,7 +29,7 @@ export function blackPawnInWhiteCaseMove(board: Chessboard, move: Move): boolean
     // Capture
     if (equals(move.to, left(bottom(move.from))) || equals(move.to, right(bottom(move.from)))) {
         const destination: Square = squareAtPosition(board, move.to);
-        return !(destination.isEmpty || destination.piece.isWhite);
+        return !destination.isEmpty && destination.piece.isWhite;
     }
 
     return false;
@@ -62,7 +62,7 @@ export function whitePawnInWhiteCaseMove(board: Chessboard, move: Move): boolean
     // Capture
     if (equals(move.to, left(top(move.from))) || equals(move.to, right(top(move.from)))) {
         const destination: Square = squareAtPosition(board, move.to);
-        return !(destination.isEmpty || destination.piece.isWhite);
+        return !destination.isEmpty && !destination.piece.isWhite;
     }
 
     return false;
