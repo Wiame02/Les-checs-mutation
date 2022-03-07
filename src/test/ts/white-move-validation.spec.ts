@@ -1,5 +1,4 @@
 import { Expect, Test, Setup } from 'alsatian';
-import * as isPossible from '../../main/ts/move-validation';
 import * as pieces from '../../main/ts/piece';
 import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chessboard';
 import * as position from '../../main/ts/position';
