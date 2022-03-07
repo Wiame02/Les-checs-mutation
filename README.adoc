@@ -255,7 +255,7 @@ Commencez par la 1e fonctionnalité, la validation des déplacements horizontaux
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function rookMove(board: Chessboard, move: Move): boolean {
+export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank; // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
 }
 ----
@@ -264,28 +264,32 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
 [source,ts]
 ----
-// Dans le fichier "rook-move-validation.spec.ts"
+// Dans le fichier "red-move-validation.spec.ts"
+import * as position from '../../main/ts/position';
+import * as move from './predefined-movements';
+import { isMovePossible } from '../../main/ts/movements';
+
 let chessboard : Chessboard;
 
-export class TestRookMoves {
+export class TestPawnInRedCaseMoves {
     @Setup
     beforeEach(){
         chessboard = createEmptyChessboard();
 
-        // La variable "positionE4" a été créée au début du module pour simplifier le code des tests
-        // Place un pion sur la case B4 d'un échiquier vide:
+        // La constante "E4" a été créée dans le module `position`.
+        // Place un pion blanc sur la case B4 d'un échiquier vide:
 
         putPiece(chessboard, position.B4, pieces.whitePawn);
     }
 
-    @Test("A rook can move horizontally")
-    testCanMoveHorizontally() {
-        // Les variable "move.B4_H4" et "moveB4_A4" ont été créées au début 
-        // du module pour simplifier le code des tests.
+    @Test("In a red case, a Pawn can move horizontally")
+    testCanMoveHorizontally(): void {
+        // Les variable "move.B4_H4" et "move.B4_A4" ont été créées dans le module `predefined-movements`, 
+        // pour simplifier le code des tests.
         // Le déplacement doit être possible:
 
-        Expect(isPossible.rookMove(chessboard, moveB4_H4)).toBeTruthy();
-        Expect(isPossible.rookMove(chessboard, moveB4_A4)).toBeTruthy();
+        Expect(isMovePossible(chessboard, moveB4_H4)).toBeTruthy();
+        Expect(isMovePossible(chessboard, moveB4_A4)).toBeTruthy();
     }
 }
 ----
@@ -293,12 +297,12 @@ export class TestRookMoves {
 ==== Etape 2
 
 Nouvelle fonctionnalité à implémenter: la validation des déplacements verticaux. 
-Modifiez la fonction `rookMove()`:
+Modifiez la fonction `pawnInRedCaseMove()`:
 
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function rookMove(board: Chessboard, move: Move): boolean {
+export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank || // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
         move.from.file === move.to.file;  // Si les colonnes de début de fin sont les mêmes, le déplacement est vertical
 }
@@ -309,20 +313,20 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 [source,ts]
 ----
 // Dans le fichier "rook-move-validation.spec.ts"
-export class TestRookMoves {
+export class TestPawnInRedCaseMoves {
     // (...)
 
-    @Test("A Rook can move vertically")
-    testCanMoveVertically() {
-        Expect(isPossible.rookMove(chessboard, moveB4_B8)).toBeTruthy();
-        Expect(isPossible.rookMove(chessboard, moveB4_B1)).toBeTruthy();
+    @Test("In a red case, a Pawn can move vertically")
+    testCanMoveVertically(): void {
+        Expect(isMovePossible(chessboard, move.B4_B8)).toBeTruthy();
+        Expect(isMovePossible(chessboard, move.B4_B1)).toBeTruthy();
     }
 }
 ----
 
 ==== Autres étapes
 
-Suivez la même démarche pour implémenter et tester les autres fonctionnalités, c'est à dire, les autres mouvements possibles des Tours.
+Suivez la même démarche pour implémenter et tester les autres fonctionnalités, c'est à dire, les autres mouvements possibles des Pions sur des cases rouges.
 
 === Rendu
 
