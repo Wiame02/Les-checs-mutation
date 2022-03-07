@@ -198,41 +198,48 @@ Le traitement des déplacements se fait de la façon suivante:
 . La fonction `processMove()` appelle ensuite la fonction `isMovePossible()`, qui fait appel à différentes fonctions de validation spécifiques aux pièces de l'échiquier (une par type de pièce). 
 Le module `move-validation` contient toutes les fonctions de validation de déplacements.
 
-. Par exemple, lorsqu'il s'agit d'un Pion blanc, la fonction `isMovePossible()` appelle la fonction `whitePawnMove()`, qui retourne `true` si le déplacement est possible ou `false` si ce n'est pas le cas.
+. Par exemple, lorsqu'il s'agit d'un Pion sur une case blanche, la fonction `isMovePossible()` appelle la fonction `whitePawnInWhiteCaseMove()`, qui retourne `true` si le déplacement est possible ou `false` si ce n'est pas le cas.
 
 . Si le mouvement est possible, c'est à dire la fonction `isMovePossible()` retourne `true`, la fonction `processMove()` appelle la fonction `performMove()`, qui effectue le déplacement.
 
-Vous devez donc parcourir le module `move-validation` et implémenter les fonctions de validation contenant le commentaire "`// {hash}TODO:`". 
+Vous aurez deux tâches à effectuer{nbsp}:
+
+. Modifier la fonction `isMovePossible()` du module `movements`, de façon à considérer toutes le couleurs de case possibles et non seulement le cases blanches. Cette fonction doit appeler les fonctions du module `move-validation`.
+
+. Parcourir le module `move-validation` et implémenter les fonctions de validation contenant le commentaire "`// {hash}TODO:`". 
 
 === Tests unitaires
 
 Pour vérifier que les fonctions du module `move-validation` fonctionnent correctement, vous devez écrire des tests unitaires, qui vont vérifier que les fonctions acceptent les mouvements possibles et n'acceptent pas les mouvements impossibles.
-Les mouvements sont possibles (ou impossibles) en accord avec les https://fr.wikipedia.org/wiki/Échecs[règles des échecs].
+Les mouvements sont possibles (ou impossibles) en accord avec les règles des https://fr.wikipedia.org/wiki/Échecs[échecs classiques] et
+celles des https://fr.wikipedia.org/wiki/Chess_mutation[échecs mutation].
 Comme ces règles sont complexes, vous serez mené à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
 
-Les signatures des fonctions du module `move-validation` suivent la même convention :
+Pour tester indirectement les fonctions de validation des mouvements, 
+vous allez utiliser la fonction `isMovePossible()`, dont la signature est donnée ci-dessous{nbsp}:
 
 [source,ts]
 ----
-function colorPieceMove(board: Chessboard, move: Move): boolean
+export function isMovePossible(chessboard: Chessboard, movement: Move): boolean
 ----
 
-Le paramètre `board` contient l'échiquier de la partie en cours et `move` contient le déplacement demandé par le joueur à travers le navigateur.
-Le paramètre `move` contient 2 coordonnées de type `Position`, représentant le début et la fin du déplacement.
+Le paramètre `chessboard` contient l'échiquier de la partie en cours et `movement` contient le déplacement demandé par le joueur à travers le navigateur.
+Le paramètre `movement` contient 2 coordonnées de type `Position`, représentant le début et la fin du déplacement.
 Les coordonnées indiquent *toujours* des cases à l'intérieur de l'échiquier, c'est à dire, une colonne entre `A` et `H` et une ligne entre `1` et `8`.
 Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à l'extérieur de l'échiquier.
 
-Les tests unitaires de la fonction `blackPawnMove()` ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/pawn-move-validation-spec.ts`.
+Les tests unitaires des déplacements sur des cases blanches ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/white-move-validation-spec.ts`.
 *Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ces fichiers !* 
 
-Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. Observez le cycle de développement suivant :
+Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. 
+Observez le cycle de développement suivant :
 
 . Implémentez une fonctionnalité simple.
 . Écrivez le ou les tests unitaires qui vérifient cette fonctionnalité.
 . Exécutez les tests pour vérifier que la fonctionnalité marche correctement et la non-régression.
 . Recommencez avec la fonctionnalité suivante.
 
-Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
+Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des cases rouges (`pawnInRedCaseMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités{nbsp}: 
 
 * Validation des mouvements horizontaux, verticaux et diagonaux, sans se préoccuper des autres pièces.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
@@ -334,4 +341,4 @@ Tant que tout cela est bien fait avant la date limite de rendu, alors tout est b
 
 * Écrivez les tests unitaires avant ou en même temps que les fonctions. Ne les laissez pas pour la fin, les test unitaires sont très utiles pendant le développement et vous feront gagner du temps.
 
-* Faites bon usage de `git` : effectuez des validations (_commits_) et des publications (_pushs_) régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
+* Faites bon usage de `git` : effectuez des validations (_commits_) et des publications (_pushs_) régulièrement{nbsp}! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
