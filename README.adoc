@@ -66,7 +66,7 @@ Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à v
 +
 [source,bash]
 ----
-git clone https://gitlab.univ-nantes.fr/${USER}/projet-202#.git
+git clone https://gitlab.univ-nantes.fr/${USER}/projet-2021.git
 cd projet-2021
 npm install
 ----
@@ -75,7 +75,7 @@ npm install
 +
 [source,txt]
 ----
-    |-- projet-2020
+    |-- projet-2021
       |-- client
          |-- script.js
          |-- style.css
@@ -127,7 +127,7 @@ git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2021.git
 
 
 
-.Cette instruction précédente  récupère les changements et les fusionne avec votre divergence (faire chaque fois que l'in souhaite récupérer les changements)
+.Cette instruction précédente  récupère les changements et les fusionne avec votre divergence (faire chaque fois que l'on souhaite récupérer les changements)
 [source,sh]
 --
 git pull upstream master
@@ -186,7 +186,7 @@ Le serveur traite alors la requête afin de jouer le coup demandé.
 
 La version actuelle permet le déplacement libre des pièces, sans respecter les règles des échecs.
 Pour l'instant, seuls les déplacements des pions dans les cases blanches sont validés.
-Vous devez mettre en oeuvre la validation des déplacements des pions dans mes autres cases: grises (Dame), jaunes (Cavalier), bleues (Fou) et rouges (Tour). 
+Vous devez mettre en oeuvre la validation des déplacements des pions dans les autres cases: grises (Dame), jaunes (Cavalier), bleues (Fou) et rouges (Tour). 
 Vous devez également  mettre en oeuvre la validation des déplacements des rois.
 
 Le traitement des déplacements se fait de la façon suivante:
@@ -213,7 +213,7 @@ Vous aurez deux tâches à effectuer{nbsp}:
 Pour vérifier que les fonctions du module `move-validation` fonctionnent correctement, vous devez écrire des tests unitaires, qui vont vérifier que les fonctions acceptent les mouvements possibles et n'acceptent pas les mouvements impossibles.
 Les mouvements sont possibles (ou impossibles) en accord avec les règles des https://fr.wikipedia.org/wiki/Échecs[échecs classiques] et
 celles des https://fr.wikipedia.org/wiki/Chess_mutation[échecs mutation].
-Comme ces règles sont complexes, vous serez mené à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
+Comme ces règles sont complexes, vous serez menés à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
 
 Pour tester indirectement les fonctions de validation des mouvements, 
 vous allez utiliser la fonction `isMovePossible()`, dont la signature est donnée ci-dessous{nbsp}:
