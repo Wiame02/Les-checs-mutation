@@ -3,27 +3,27 @@
  */
 
 /**
- * Chess is played on a square board of eight rows (called ranks,
- * denoted 1 to 8) and eight columns (called files, denoted a to h).
+ * Chess is played on a square board of eight columns (called files, denoted a to h)
+ * and eight rows (called ranks, denoted 1 to 8).
  */
 export type Position = {
-    rank: number;
     file: number;
+    rank: number;
 };
 
 /**
- * Creates a new Posistion from two numbers, representing
+ * Creates a new Position from two numbers, representing
  * the new position's file and rank.
  *
- * @param rank this position rank, from 0..7
- * @param file this position file, from 0..7
+ * @param file this position file, from 0..7 (a to h in a chessboard)
+ * @param rank this position rank, from 0..7 (1 to 8 in a chessboard)
  */
 export function position(file: number, rank: number): Position {
-    return { rank: rank, file: file };
+    return { file: file, rank: rank };
 }
 
 export function bottom(pos: Position): Position {
-    return { file: pos.file, rank: pos.rank - 1 } ;
+    return { file: pos.file, rank: pos.rank - 1 };
 }
 
 export function top(pos: Position): Position {
@@ -43,26 +43,27 @@ export function equals(one: Position, other: Position): boolean {
 }
 
 export function isWhitePosition(pos: Position): boolean {
-    return WHITE_POSITIONS.some(p => equals(p, pos));
+    return WHITE_POSITIONS.some((p) => equals(p, pos));
 }
 
 export function isRedPosition(pos: Position): boolean {
-    return RED_POSITIONS.some(p => equals(p, pos))
+    return RED_POSITIONS.some((p) => equals(p, pos))
 }
 
 export function isYellowPosition(pos: Position): boolean {
-    return YELLOW_POSITIONS.some(p => equals(p, pos));
+    return YELLOW_POSITIONS.some((p) => equals(p, pos));
 }
 
 export function isBluePosition(pos: Position): boolean {
-    return BLUE_POSITIONS.some(p => equals(p, pos));
+    return BLUE_POSITIONS.some((p) => equals(p, pos));
 }
 
 export function isGreyPosition(pos: Position): boolean {
-    return GREY_POSITIONS.some(p => equals(p, pos));
+    return GREY_POSITIONS.some((p) => equals(p, pos));
 }
 
 export const NULL_POSITION = position(-1, -1);
+
 export const A1: Position = position(0, 0); // A1
 export const A2: Position = position(0, 1); // A2
 export const A3: Position = position(0, 2); // A3

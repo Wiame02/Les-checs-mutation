@@ -11,7 +11,7 @@ export function isEmpty(chessboard: Chessboard, position: Position): boolean {
     return square.isEmpty;
 }
 
-export function emptyfile(chessboard: Chessboard, move: Move): boolean {
+export function emptyFile(chessboard: Chessboard, move: Move): boolean {
     let start: number;
     let end: number;
     const file: number = move.from.file;

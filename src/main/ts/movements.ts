@@ -68,7 +68,7 @@ export function parseMoveString(movementString: string): Move {
         const to: Position = { rank: toRank - 1, file: toFile > 90 ? toFile - 97 : toFile - 65 };
 
         newMove = { isValid: true, from: from, to: to };
-    }  
+    }
     return newMove;
 }
 
