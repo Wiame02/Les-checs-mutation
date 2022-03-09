@@ -139,8 +139,12 @@ git pull upstream master
 == Test et lancement
 
 * Le projet utilise l'outil de construction et de gestion de modules *npm*.
-* Pour lancer tous les tests unitaires du projet avec Alsatian, exécutez: `npm run test`.
-* Pour lancer le serveur en mode développement, exécutez: `npm run dev`.
+* Pour lancer tous les tests unitaires du projet avec Alsatian, deux manières:
+** soit dans un terminal vous exécutez: `npm run test`
+** soit dans VSCode, en bas à gauche de l'explorateur, dans la section _Scripts NPM_, vous cliquez sur le petit bouton "lecture" de la ligne correspondant à l'action `test` (vous pouvez aussi lancer en mode debug via le petit bouton "insecte", et ainsi utiliser le débogueur)
+* Pour lancer le serveur en mode développement, là aussi deux manières :
+** soit dans un terminal vous exécutez: `npm run dev`
+** soit dans VSCode, en bas à gauche de l'explorateur, dans la section _Scripts NPM_, vous cliquez sur le petit bouton "lecture" de la ligne correspondant à l'action `dev` (vous pouvez aussi lancer en mode debug via le petit bouton "insecte", et ainsi utiliser le débogueur)
 * Pour accéder à l'application, ouvrez l'URL suivante: http://localhost:8080.
 * Pour accéder au contenu JSON de l'échiquier en cours, utilisez l'URL suivante: http://localhost:8080/status.js.
 
