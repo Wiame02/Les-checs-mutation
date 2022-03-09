@@ -153,14 +153,23 @@ git pull upstream master
 Pour déplacer les pièces sur l'échiquier, indiquez dans le formulaire en bas de page la pièce à déplacer et sa destination.
 Utilisez la notation par coordonnées, qui inclut la place à partir de laquelle la pièce se déplace, ainsi que sa destination.
 
-.Par exemple:
+.Exemple de début de partie
 |===
 |Coup |Coordonnées |Description 
 
-| 1. |E2-E4 E7-E5 |Pion blanc en E2 se déplace à E4. Pion noir en E7 se déplace à E5.
-| 2. 
-|G1-F3 B8-C6
-|Pion blanc en G1 se déplace à F3. Pion noir en B8 se déplace à C6.
+| 1. |E2-E4 |Pion blanc en E2 se déplace à E4.
+
+| 2. |E7-E5 |Pion noir en E7 se déplace à E5.
+
+
+| 3. 
+|G1-F3
+|Pion blanc en G1 se déplace à F3.
+
+| 4. 
+|B8-C6
+|Pion noir en B8 se déplace à C6.
+
 |===
 
 == Fonctionnement de l'application
