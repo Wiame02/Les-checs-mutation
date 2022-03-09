@@ -11,6 +11,7 @@ const app = express();
 
 import { Chessboard, createInitialChessboard } from './chessboard';
 import { processMove } from './movements';
+import { BLUE_POSITIONS, GREY_POSITIONS, RED_POSITIONS, WHITE_POSITIONS, YELLOW_POSITIONS } from './position';
 
 class HttpServer {
     port: number;
@@ -37,7 +38,10 @@ class HttpServer {
         });
 
         app.get('/status.js', (req: express.Request, res: express.Response) => {
-            res.end('var boardJSON= ' + JSON.stringify(chessboard));
+            const allPositions = {white : WHITE_POSITIONS, red :RED_POSITIONS , yellow: YELLOW_POSITIONS, blue : BLUE_POSITIONS, grey : GREY_POSITIONS}
+            const boardPositionsStatement = 'var positionsJSON= ' + JSON.stringify(allPositions)
+            const boardJSONStatement = 'var boardJSON= ' + JSON.stringify(chessboard)
+            res.end(boardJSONStatement + "\n" + boardPositionsStatement);
         });
 
         app.post('/', (req: express.Request, res: express.Response) => {

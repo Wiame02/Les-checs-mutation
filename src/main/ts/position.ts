@@ -137,10 +137,10 @@ export const H7: Position = position(7, 6); // H7
 export const H8: Position = position(7, 7); // H8
 
 /* eslint-disable prettier/prettier*/
-const WHITE_POSITIONS  = [A2, B2, C2, D2, E2, F2, G2, H2, A7, B7, C7, D7, E7, F7, G7, H7]
-const RED_POSITIONS    = [A1, A8, H1, H8, A8, B4, B5, G4, G5];
-const YELLOW_POSITIONS = [B1, G1, B3, C3, D3, E3, F3, G3, C4, F4, C5, F5, B6, C6, D6, E6, F6, G6, B8, G8];
-const BLUE_POSITIONS   = [C1, F1, A4, D4, E4, H4, A5, D5, E5, H5, C8, F8];
-const GREY_POSITIONS   = [D1, E1, A3, H3, A6, H6, D8, E8];
+export const WHITE_POSITIONS  = [A2, B2, C2, D2, E2, F2, G2, H2, A7, B7, C7, D7, E7, F7, G7, H7]
+export const RED_POSITIONS    = [A1, A8, H1, H8, A8, B4, B5, G4, G5];
+export const YELLOW_POSITIONS = [B1, G1, B3, C3, D3, E3, F3, G3, C4, F4, C5, F5, B6, C6, D6, E6, F6, G6, B8, G8];
+export const BLUE_POSITIONS   = [C1, F1, A4, D4, E4, H4, A5, D5, E5, H5, C8, F8];
+export const GREY_POSITIONS   = [D1, E1, A3, H3, A6, H6, D8, E8];
 /* eslint-enable */
 

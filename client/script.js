@@ -23,4 +23,16 @@ function init(){
             }
         }
     }    
+    applyColor("white", "white")
+    applyColor("red", "crimson")
+    applyColor("yellow", "gold")
+    applyColor("blue", "cornflowerblue")
+    applyColor("grey", "grey")
+}
+
+function applyColor(positionName, htmlColor) {
+    positionsJSON[positionName].forEach((element) => { 
+        var squareView = document.getElementsByTagName("tr")[element.rank+1].getElementsByTagName("td")[element.file];
+        squareView.style.backgroundColor = htmlColor
+    })
 }
