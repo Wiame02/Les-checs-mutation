@@ -34,14 +34,14 @@ export class ParseMoveStringTest {
     }
 
     @Test('a1-h8 == A1-H8')
-    testParseLowerCase(): void {
-        const lowercaseMove: Move = parseMoveString('a1-h8');
-        const uppercaseMove: Move = parseMoveString('A1-H8');
+    testParseLowerSquare(): void {
+        const lowersquareMove: Move = parseMoveString('a1-h8');
+        const uppersquareMove: Move = parseMoveString('A1-H8');
 
-        Expect(lowercaseMove.isValid).toBeTruthy();
-        Expect(uppercaseMove.isValid).toBeTruthy();
+        Expect(lowersquareMove.isValid).toBeTruthy();
+        Expect(uppersquareMove.isValid).toBeTruthy();
 
-        Expect(equals(lowercaseMove.from, uppercaseMove.from)).toBeTruthy();
-        Expect(equals(lowercaseMove.to, uppercaseMove.to)).toBeTruthy();
+        Expect(equals(lowersquareMove.from, uppersquareMove.from)).toBeTruthy();
+        Expect(equals(lowersquareMove.to, uppersquareMove.to)).toBeTruthy();
     }
 }

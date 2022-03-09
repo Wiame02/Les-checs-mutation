@@ -3,43 +3,43 @@ import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chess
 
 let chessboard: Chessboard;
 
-export class TestPawnInGreyCaseMoves {
+export class TestPawnInGreySquareMoves {
     @Setup
     beforeEach(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn can move diagonally')
+    @Test('In a grey square, a Pawn can move diagonally')
     testCanMoveDiagonally(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn can move horizontally')
+    @Test('In a grey square, a Pawn can move horizontally')
     testCanMoveHorizontally(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn can move vertically')
+    @Test('In a grey square, a Pawn can move vertically')
     testCanMoveVertically(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn can only move horizontally, vertically, and diagonally')
+    @Test('In a grey square, a Pawn can only move horizontally, vertically, and diagonally')
     testForbiddenMoves(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn cannot leap other pieces')
+    @Test('In a grey square, a Pawn cannot leap other pieces')
     testCannotLeap(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn cannot capure pieces from the same color')
+    @Test('In a grey square, a Pawn cannot capure pieces from the same color')
     testCannotCaptureSameColor(): void {
         // TODO:
     }
 
-    @Test('In a grey case, a Pawn can capure pieces from a different color')
+    @Test('In a grey square, a Pawn can capure pieces from a different color')
     testCanCaptureDifferentColor(): void {
         // TODO:
     }

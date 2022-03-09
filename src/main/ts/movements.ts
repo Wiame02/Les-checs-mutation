@@ -91,9 +91,9 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
 
     if (position.isWhitePosition(current)) {
         if (piece.isWhite) {
-            return isPossible.whitePawnInWhiteCaseMove(chessboard, movement);
+            return isPossible.whitePawnInWhiteSquareMove(chessboard, movement);
         } else {
-            return isPossible.blackPawnInWhiteCaseMove(chessboard, movement);
+            return isPossible.blackPawnInWhiteSquareMove(chessboard, movement);
         }
     }
     // TODO: Red position

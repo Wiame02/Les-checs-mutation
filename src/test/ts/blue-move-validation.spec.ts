@@ -3,7 +3,7 @@ import { Chessboard, createEmptyChessboard, putPiece } from '../../main/ts/chess
 
 let chessboard: Chessboard;
 
-export class TestPawnMovesInBlueCases {
+export class TestPawnMovesInBlueSquares {
     @Setup
     beforeEach(): void {
         // TODO:
@@ -11,32 +11,32 @@ export class TestPawnMovesInBlueCases {
         // Place a black Pawn on E4
     }
 
-    @Test('In a blue case, a Pawn can move diagonally')
+    @Test('In a blue square, a Pawn can move diagonally')
     testCanMoveDiagonally(): void {
         // TODO:
     }
 
-    @Test('In a blue case, a Pawn cannot move horizontally')
+    @Test('In a blue square, a Pawn cannot move horizontally')
     testCannotMoveHorizontally(): void {
         // TODO:
     }
 
-    @Test('In a blue case, a Pawn cannot move vertically')
+    @Test('In a blue square, a Pawn cannot move vertically')
     testCannotMoveVertically(): void {
         // TODO:
     }
 
-    @Test('In a blue case, a Pawn can capture a piece from another color')
+    @Test('In a blue square, a Pawn can capture a piece from another color')
     testCanCaptureDifferentColor(): void {
         // TODO:
     }
 
-    @Test('In a blue case, a Pawn cannot capture a piece from the same color')
+    @Test('In a blue square, a Pawn cannot capture a piece from the same color')
     testCannotCaptureSameColor(): void {
         // TODO:
     }
 
-    @Test('In a blue case, a Pawn cannot leap other pieces')
+    @Test('In a blue square, a Pawn cannot leap other pieces')
     testCannotLeapDiagonally(): void {
         // TODO:
     }

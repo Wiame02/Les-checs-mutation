@@ -3,8 +3,8 @@ import { Move } from './movements';
 import { equals, left, right, top, bottom } from './position';
 
 /**
- * Checks whether a Black Pawn in a white case can perform a given move.
- * Inside a white case, the black pawn moves like a pawn in classic chess.
+ * Checks whether a Black Pawn in a white square can perform a given move.
+ * Inside a white square, the black pawn moves like a pawn in classic chess.
  * That is, it can move forward to the unoccupied square immediately in front of
  * it on the same file, or on its first move it can advance two squares along
  * the same file, provided both squares are unoccupied (black dots in the
@@ -15,7 +15,7 @@ import { equals, left, right, top, bottom } from './position';
  * @param board The chessboard of the current game
  * @param move
  */
-export function blackPawnInWhiteCaseMove(board: Chessboard, move: Move): boolean {
+export function blackPawnInWhiteSquareMove(board: Chessboard, move: Move): boolean {
     // Single forward
     if (equals(move.to, bottom(move.from))) {
         return isEmpty(board, move.to);
@@ -36,8 +36,8 @@ export function blackPawnInWhiteCaseMove(board: Chessboard, move: Move): boolean
 }
 
 /**
- * Checks whether a White Pawn in a white case can perform a given move.
- * Inside a white case, the black pawn moves like a pawn in classic chess.
+ * Checks whether a White Pawn in a white square can perform a given move.
+ * Inside a white square, the black pawn moves like a pawn in classic chess.
  * That is, it can move forward to the unoccupied square immediately in front of
  * it on the same file, or on its first move it can advance two squares along
  * the same file, provided both squares are unoccupied (black dots in
@@ -48,7 +48,7 @@ export function blackPawnInWhiteCaseMove(board: Chessboard, move: Move): boolean
  * @param board The chessboard of the current game
  * @param move
  */
-export function whitePawnInWhiteCaseMove(board: Chessboard, move: Move): boolean {
+export function whitePawnInWhiteSquareMove(board: Chessboard, move: Move): boolean {
     // Single forward
     if (equals(move.to, top(move.from))) {
         return isEmpty(board, move.to);
@@ -81,60 +81,60 @@ export function kingMove(board: Chessboard, move: Move): boolean {
 }
 
 /**
- * Checks whether a Pawn in a grey case can perform a given move.
- * In a white case, the Pawn moves like a Queen in classic chess.
+ * Checks whether a Pawn in a grey square can perform a given move.
+ * In a white square, the Pawn moves like a Queen in classic chess.
  * That is, it combines the power of a rook and bishop and can move any
  * number of squares along a rank, file, or diagonal, but cannot leap over other pieces.
  *
  * @param board The chessboard of the current game
  * @param move
  */
-export function pawnInGreyCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     return true;
 }
 
 /**
- * Checks whether a Pawn in a red case can perform a given move.
- * In a red case, the Pawn moves like a Rook in classic chess.
+ * Checks whether a Pawn in a red square can perform a given move.
+ * In a red square, the Pawn moves like a Rook in classic chess.
  * That is, it can move any number of squares along a rank or file,
  * but cannot leap over other pieces.
  * 
  * @param board The chessboard of the current game
  * @param move
  */
-export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     return true;
 }
 
 /**
- * Checks whether a Pawn in a blue case can perform a given move.
- * In a white case, the Pawn moves like a Bishop in classic chess.
+ * Checks whether a Pawn in a blue square can perform a given move.
+ * In a white square, the Pawn moves like a Bishop in classic chess.
  * That is, it can move any number of squares diagonally,
  * but cannot leap over other pieces.
  *
  * @param board The chessboard of the current game
  * @param move
  */
-export function pawnInBlueCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     return true;
 }
 
 /**
- * Checks whether a Pawn in an Yellow case can perform a given move.
- * In a yellow case, the Pawn moves like a Knight in classic chess.
+ * Checks whether a Pawn in an Yellow square can perform a given move.
+ * In a yellow square, the Pawn moves like a Knight in classic chess.
  * That is, its move forms an "L"-shape:
  * two squares vertically and one square horizontally, or two
  * squares horizontally and one square vertically.)
  *
- * In an Yellow case, the Pawn can leap over other pieces.
+ * In an Yellow square, the Pawn can leap over other pieces.
  *
  * @param board The chessboard of the current game
  * @param move
  */
-export function pawnInYellowCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInYellowSquareMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     return true;
 }

@@ -6,22 +6,22 @@ import * as move from './predefined-movements';
 import { isMovePossible } from '../../main/ts/movements';
 
 let chessboard: Chessboard;
-export class TestBlackPawnMovesInWhiteCases {
+export class TestBlackPawnMovesInWhiteSquares {
     chessboard: Chessboard;
     @Setup
     beforeEach(): void {
 
-        // For all test cases, prepare an empty board and add a single black pawn in A7
+        // For all test squares, prepare an empty board and add a single black pawn in A7
         chessboard = createEmptyChessboard();
         putPiece(chessboard, position.A7, pieces.blackPawn);
     }
 
-    @Test('In white cases, Pawns can move forward')
+    @Test('In white squares, Pawns can move forward')
     testPawnCanMoveForward(): void {
         Expect(isMovePossible(chessboard, move.A7_A6)).toBeTruthy();
     }
 
-    @Test('In white cases, Pawns cannot move backward')
+    @Test('In white squares, Pawns cannot move backward')
     testPawnCannotMoveBackward(): void {
         Expect(isMovePossible(chessboard, move.A7_A8)).not.toBeTruthy();
     }
@@ -42,18 +42,18 @@ export class TestBlackPawnMovesInWhiteCases {
         Expect(isMovePossible(chessboard, move.A7_A6)).not.toBeTruthy();
     }
 
-    @Test('In white cases, Pawns cannot capture an empty square ')
+    @Test('In white squares, Pawns cannot capture an empty square ')
     testPawnCannotCaptureEmptySquare(): void {
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
-    @Test('In white cases, Pawns cannot capture pieces of the same color')
+    @Test('In white squares, Pawns cannot capture pieces of the same color')
     testPawnCannotCaptureSameColor(): void {
         putPiece(chessboard, position.B6, pieces.blackKing);
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
-    @Test('In white cases, Pawns can capture pieces of a different color')
+    @Test('In white squares, Pawns can capture pieces of a different color')
     testPawnCanCaptureDifferentColorPieces(): void {
         putPiece(chessboard, position.B6, pieces.whitePawn);
         Expect(isMovePossible(chessboard, move.A7_B6)).toBeTruthy();
