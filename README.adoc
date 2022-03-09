@@ -55,6 +55,8 @@ La règle du jeu reste la même, l'objectif étant de mater l'adversaire.
 
 == Préparation
 
+=== Création et configuration du projet
+
 . Créez une divergence (en anglais, _fork_) du projet suivant sur votre compte GitLab: 
 https://gitlab.univ-nantes.fr/naomod/idl/projet-2021/-/forks/new
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
@@ -118,13 +120,13 @@ NOTE: Si vous n'êtes pas sur une machine université, remplacez `${USER}` par v
 ** `package.json` est le fichier de configuration de *npm*. Vous n'avez pas besoin de le modifier.
 ** `tsconfig.json` est le fichier de configuration de *TypeScript*. Vous n'avez pas besoin de le modifier.
 
-=== Mise à jour du projet
+=== Mise à jour du projet (seulement si nécessaire)
 
-Les erreurs ou manques de précision du projet seront corrigées dès que possible.
-Cela impliquera la mise à jour des vos divergences pour récupérer les changements.
-Pour cela, vous devez faire:
+Il est possible que le projet contienne des problèmes ou des manques de précision, et que l'équipe enseignante corrige ces problèmes après que vous ayiez commencé le projet.
+Cela nécessitera de votre part la mise à jour des votre divergence pour récupérer les corrections réalisées.
+Pour cela, vous devrez faire:
 
-Cette instruction ajoute le dépôt originel et le nomme "upstream" (à faire une seule fois)
+.Cette instruction ajoute le dépôt originel et le nomme "upstream" (à faire une seule fois)
 [source,shell]
 --
 git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2021.git 
@@ -132,7 +134,7 @@ git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2021.git
 
 
 
-.Cette instruction précédente  récupère les changements et les fusionne avec votre divergence (faire chaque fois que l'on souhaite récupérer les changements)
+.Cette instruction récupère les changements et les fusionne avec votre divergence (à faire chaque fois que l'on souhaite récupérer les changements)
 [source,sh]
 --
 git pull upstream master
