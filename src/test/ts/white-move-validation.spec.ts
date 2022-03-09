@@ -10,24 +10,24 @@ export class TestBlackPawnMovesInWhiteCases {
     chessboard: Chessboard;
     @Setup
     beforeEach(): void {
+
+        // For all test cases, prepare an empty board and add a single black pawn in A7
         chessboard = createEmptyChessboard();
+        putPiece(chessboard, position.A7, pieces.blackPawn);
     }
 
     @Test('In white cases, Pawns can move forward')
     testPawnCanMoveForward(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         Expect(isMovePossible(chessboard, move.A7_A6)).toBeTruthy();
     }
 
     @Test('In white cases, Pawns cannot move backward')
     testPawnCannotMoveBackward(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         Expect(isMovePossible(chessboard, move.A7_A8)).not.toBeTruthy();
     }
 
     @Test('When in the initial position, paws can move 2 squares forward')
     testPawnInitialMove(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         Expect(isMovePossible(chessboard, move.A7_A5)).toBeTruthy();
     }
 
@@ -36,32 +36,26 @@ export class TestBlackPawnMovesInWhiteCases {
         Expect(isMovePossible(chessboard, move.A7_A4)).not.toBeTruthy();
     }
 
-    @Test('When in face of another piece, pawns cannot move foreward')
+    @Test('When in face of another piece, pawns cannot move forward')
     testPawnCannotMoveForwardToFullSquare(): void {
         putPiece(chessboard, position.A6, pieces.whitePawn);
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         Expect(isMovePossible(chessboard, move.A7_A6)).not.toBeTruthy();
     }
 
     @Test('In white cases, Pawns cannot capture an empty square ')
     testPawnCannotCaptureEmptySquare(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
     @Test('In white cases, Pawns cannot capture pieces of the same color')
     testPawnCannotCaptureSameColor(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         putPiece(chessboard, position.B6, pieces.blackKing);
-
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
     @Test('In white cases, Pawns can capture pieces of a different color')
     testPawnCanCaptureDifferentColorPieces(): void {
-        putPiece(chessboard, position.A7, pieces.blackPawn);
         putPiece(chessboard, position.B6, pieces.whitePawn);
-
         Expect(isMovePossible(chessboard, move.A7_B6)).toBeTruthy();
     }
 }

@@ -7,7 +7,6 @@ export class TestPawnInRedCaseMoves {
     @Setup
     beforeEach(): void {
         // TODO:
-        // Initialize an empty chessboard
     }
 
     @Test('In a red case, a Pawn can move horizontally')
