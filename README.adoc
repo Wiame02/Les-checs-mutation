@@ -62,7 +62,7 @@ Cette étape est très importante car elle nous permet de retrouver vos projets 
 ..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
 Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
 ..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
-. Créez et configurez une copie locale du projet. Ouvrez le *Terminal* et exécutez les commandes suivantes:
+. Créez et configurez une copie locale du projet. Ouvrez le *Terminal* et exécutez les commandes suivantes :
 +
 [source,bash]
 ----
@@ -70,6 +70,8 @@ git clone https://gitlab.univ-nantes.fr/${USER}/projet-2021.git
 cd projet-2021
 npm install
 ----
++
+NOTE: Si vous n'êtes pas sur une machine université, remplacez `${USER}` par votre identifiant université.
 
 . Regardez la structure du projet. Le projet est organisé en différents dossiers:
 +
