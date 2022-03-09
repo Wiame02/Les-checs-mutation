@@ -1,4 +1,7 @@
 :hash: #
+:sectnums:
+:toc:
+
 = Les échecs mutation 
 
 Ce projet consiste à déployer une application web de jeu d'échecs _mutation_ jouable en multijoueur.
