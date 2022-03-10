@@ -108,7 +108,7 @@ NOTE: Si vous n'êtes pas sur une machine université, remplacez `${USER}` par v
 ----
 
 ** `client` contient le code Javascript qui sera exécuté sur le browser. Vous ne devez pas modifier le contenu de ce dossier.
-** `index.html` : page principale de l'application
+** `index.ejs` : page principale de l'application
 ** `style.css` : mise en forme de l'application
 ** `script.js` : algorithme(s) JavaScript côté client (affichage de l'échiquier)
 ** `src/main/ts` contient le code source du serveur.
@@ -234,6 +234,8 @@ Pour vérifier que les fonctions du module `move-validation` fonctionnent correc
 Les mouvements sont possibles (ou impossibles) en accord avec les règles des https://fr.wikipedia.org/wiki/Échecs[échecs classiques] et
 celles des https://fr.wikipedia.org/wiki/Chess_mutation[échecs mutation].
 Comme ces règles sont complexes, vous serez menés à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
+On remarquera que le mouvement spécial https://en.wikipedia.org/wiki/En_passant[en-passant] est impossible dans cette version. Pour ce qui est du https://fr.wikipedia.org/wiki/Roque_%28%C3%A9checs%29[roque], il ne vous est pas demandé de l'implémenter.
+
 
 Pour tester indirectement les fonctions de validation des mouvements, 
 vous allez utiliser la fonction `isMovePossible()`, dont la signature est donnée ci-dessous{nbsp}:
@@ -259,7 +261,7 @@ Observez le cycle de développement suivant :
 . Exécutez les tests pour vérifier que la fonctionnalité marche correctement et la non-régression.
 . Recommencez avec la fonctionnalité suivante.
 
-Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des cases rouges (`pawnInRedCaseMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités{nbsp}: 
+Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des cases rouges (`pawnInRedSquareMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités{nbsp}: 
 
 * Validation des mouvements horizontaux, verticaux et diagonaux, sans se préoccuper des autres pièces.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
@@ -275,7 +277,7 @@ Commencez par la 1e fonctionnalité, la validation des déplacements horizontaux
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank; // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
 }
 ----
@@ -291,7 +293,7 @@ import { isMovePossible } from '../../main/ts/movements';
 
 let chessboard : Chessboard;
 
-export class TestPawnInRedCaseMoves {
+export class TestPawnInRedSquareMoves {
     @Setup
     beforeEach(){
         chessboard = createEmptyChessboard();
@@ -302,7 +304,7 @@ export class TestPawnInRedCaseMoves {
         putPiece(chessboard, position.B4, pieces.whitePawn);
     }
 
-    @Test("In a red case, a Pawn can move horizontally")
+    @Test("In a red square, a Pawn can move horizontally")
     testCanMoveHorizontally(): void {
         // Les variable "move.B4_H4" et "move.B4_A4" ont été créées dans le module `predefined-movements`, 
         // pour simplifier le code des tests.
@@ -317,12 +319,12 @@ export class TestPawnInRedCaseMoves {
 ==== Etape 2
 
 Nouvelle fonctionnalité à implémenter: la validation des déplacements verticaux. 
-Modifiez la fonction `pawnInRedCaseMove()`:
+Modifiez la fonction `pawnInRedSquareMove()`:
 
 [source,ts]
 ----
 // Dans le fichier "move-validation.ts"
-export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
+export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
     return move.from.rank === move.to.rank || // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
         move.from.file === move.to.file;  // Si les colonnes de début de fin sont les mêmes, le déplacement est vertical
 }
@@ -333,10 +335,10 @@ export function pawnInRedCaseMove(board: Chessboard, move: Move): boolean {
 [source,ts]
 ----
 // Dans le fichier "red-move-validation.spec.ts"
-export class TestPawnInRedCaseMoves {
+export class TestPawnInRedSquareMoves {
     // (...)
 
-    @Test("In a red case, a Pawn can move vertically")
+    @Test("In a red square, a Pawn can move vertically")
     testCanMoveVertically(): void {
         Expect(isMovePossible(chessboard, move.B4_B8)).toBeTruthy();
         Expect(isMovePossible(chessboard, move.B4_B1)).toBeTruthy();
