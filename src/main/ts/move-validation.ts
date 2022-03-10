@@ -82,7 +82,7 @@ export function kingMove(board: Chessboard, move: Move): boolean {
 
 /**
  * Checks whether a Pawn in a grey square can perform a given move.
- * In a white square, the Pawn moves like a Queen in classic chess.
+ * In a grey square, the Pawn moves like a Queen in classic chess.
  * That is, it combines the power of a rook and bishop and can move any
  * number of squares along a rank, file, or diagonal, but cannot leap over other pieces.
  *
@@ -110,7 +110,7 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
 
 /**
  * Checks whether a Pawn in a blue square can perform a given move.
- * In a white square, the Pawn moves like a Bishop in classic chess.
+ * In a blue square, the Pawn moves like a Bishop in classic chess.
  * That is, it can move any number of squares diagonally,
  * but cannot leap over other pieces.
  *
@@ -123,13 +123,13 @@ export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
 }
 
 /**
- * Checks whether a Pawn in an Yellow square can perform a given move.
+ * Checks whether a Pawn in a yellow square can perform a given move.
  * In a yellow square, the Pawn moves like a Knight in classic chess.
  * That is, its move forms an "L"-shape:
  * two squares vertically and one square horizontally, or two
  * squares horizontally and one square vertically.)
  *
- * In an Yellow square, the Pawn can leap over other pieces.
+ * In an yellow square, the Pawn can leap over other pieces.
  *
  * @param board The chessboard of the current game
  * @param move
