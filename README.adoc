@@ -53,6 +53,8 @@ comme indique le tableau suivant{nbsp}:
 La règle du jeu reste la même, l'objectif étant de mater l'adversaire.
 
 
+NOTE: Pour ce projet, nous ne prendrons pas en compte les "mouvements spéciaux" qui sont habituellement autorisés aux échecs (prise en passant, roque, etc.).
+
 == Préparation
 
 === Création et configuration du projet
