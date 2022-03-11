@@ -6,6 +6,7 @@ import { Piece } from './piece';
 import * as isPossible from './move-validation';
 
 const VALID_MOVE_STRING = new RegExp('([a-h]|[A-H])([1-8])-([A-H]|[a-h])([1-8])');
+let isWhiteMove = true;
 
 export type Move = {
     isValid: boolean;
@@ -38,6 +39,7 @@ export function processMove(chessboard: Chessboard, moveString: string): boolean
 
     if (movement.isValid && isMovePossible(chessboard, movement)) {
         performMove(chessboard, movement);
+        isWhiteMove = !isWhiteMove;
     } else {
         console.log('Invalid movement !');
         return false;
@@ -84,6 +86,10 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
     }
     const piece: Piece = square.piece;
     const current: Position = movement.from;
+
+    if ((isWhiteMove && !piece.isWhite) || (!isWhiteMove && piece.isWhite)) {
+        return false;
+    }
 
     if (piece === pieces.blackKing || piece === pieces.whiteKing) {
         return isPossible.kingMove(chessboard, movement);
