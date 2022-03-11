@@ -53,7 +53,7 @@ comme indique le tableau suivant{nbsp}:
 La règle du jeu reste la même, l'objectif étant de mater l'adversaire.
 
 
-NOTE: Pour ce projet, nous ne prendrons pas en compte les "mouvements spéciaux" qui sont habituellement autorisés aux échecs (prise en passant, roque, etc.).
+NOTE: Pour ce projet, nous ne prendrons pas en compte les "mouvements spéciaux" qui sont habituellement autorisés aux échecs (prise en passant, roque, etc.). De la même manière, il est habituellement interdit de bouger une pièce si cela met en échec votre propre roi : cette règle ne sera pas prise en compte dans cette version.
 
 == Préparation
 
