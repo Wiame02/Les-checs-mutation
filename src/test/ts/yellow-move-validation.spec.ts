@@ -18,7 +18,7 @@ const D3_F5 : Move = move(position.D3, position.F5);
 export class TestPawnInYellowSquareMoves {
     @Setup
     beforeEach(): void {
-        // For all test squares, prepare an empty board and put a White bishop in D3 (yellow square)
+        // For all test squares, prepare an empty board and put a White Knight in D3 (yellow square)
         chessboard = createEmptyChessboard();
         putPiece(chessboard, position.D3, pieces.whitePawn);
     }
