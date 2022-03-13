@@ -97,7 +97,13 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
         }
     }
     // TODO: Red position
-    // TODO: Yellow position
+    if (position.isYellowPosition(current)) {
+        if(piece.isWhite) {
+            return isPossible.pawnInYellowSquareMove(chessboard, movement);
+        } else {
+            return isPossible.pawnInYellowSquareMove(chessboard, movement);
+        }
+    }
     // TODO: Blue position
     // TODO: Grey position
     return false;

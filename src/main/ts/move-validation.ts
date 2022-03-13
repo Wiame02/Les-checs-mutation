@@ -90,7 +90,6 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
     return true;
 }
 
@@ -135,6 +134,17 @@ export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInYellowSquareMove(board: Chessboard, move: Move): boolean {
+    let gapFilePos : number = Math.abs(move.to.file - move.from.file);
+    let gapRankPos : number = Math.abs(move.to.rank - move.from.rank);
+
+    // Valid Movement
+    if ((gapFilePos===1 && gapRankPos===2) || (gapFilePos===2 && gapRankPos===1)) {
+        const current : Square = squareAtPosition(board, move.from)
+        const destination : Square = squareAtPosition(board, move.to);
+
+        // Empty square or piece from other player
+        return (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite));
+    }
     // #TODO: Implement this function
-    return true;
+    return false;
 }
