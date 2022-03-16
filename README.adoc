@@ -66,9 +66,9 @@ https://gitlab.univ-nantes.fr/naomod/idl/projet-2021/-/forks/new
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
 .. Toujours dans "_Paramètres → Général_", enregistrez ceci comme description du projet : `{hash}PROJET-IDL-2021`. 
 Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
-..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
+..  Dans "_Project information → Members_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
 Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
-..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
+..  Toujours dans "_Project information → Members_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
 . Chaque membre du projet peut dès lors, individuellement, récupérer le projet et installer les dépendances via les commandes suivantes (en remplaçant `XXXXXXXXXXX` par le numéro étudiant du membre du groupe qui a effectué la divergence) :
 +
 [source,bash]
