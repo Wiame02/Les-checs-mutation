@@ -7,55 +7,105 @@ import { isMovePossible } from '../../main/ts/movements';
 
 let chessboard: Chessboard;
 export class TestBlackPawnMovesInWhiteSquares {
-    chessboard: Chessboard;
     @Setup
     beforeEach(): void {
-
         // For all test squares, prepare an empty board and add a single black pawn in A7
         chessboard = createEmptyChessboard();
         putPiece(chessboard, position.A7, pieces.blackPawn);
+
+        // Ensure it is black's turn
+        chessboard.isWhiteMove = false;
     }
 
     @Test('In white squares, Pawns can move forward')
-    testPawnCanMoveForward(): void {
+    testBlackPawnCanMoveForward(): void {
         Expect(isMovePossible(chessboard, move.A7_A6)).toBeTruthy();
     }
 
     @Test('In white squares, Pawns cannot move backward')
-    testPawnCannotMoveBackward(): void {
+    testBlackPawnCannotMoveBackward(): void {
         Expect(isMovePossible(chessboard, move.A7_A8)).not.toBeTruthy();
     }
 
     @Test('When in the initial position, paws can move 2 squares forward')
-    testPawnInitialMove(): void {
+    testBlackPawnInitialMove(): void {
         Expect(isMovePossible(chessboard, move.A7_A5)).toBeTruthy();
     }
 
     @Test('When in the initial position, pawns cannot move 3 squares forward')
-    testCannotMoveThreeSquares(): void {
+    testBlackPawnCannotMoveThreeSquares(): void {
         Expect(isMovePossible(chessboard, move.A7_A4)).not.toBeTruthy();
     }
 
     @Test('When in face of another piece, pawns cannot move forward')
-    testPawnCannotMoveForwardToFullSquare(): void {
+    testBlackPawnCannotMoveForwardToFullSquare(): void {
         putPiece(chessboard, position.A6, pieces.whitePawn);
         Expect(isMovePossible(chessboard, move.A7_A6)).not.toBeTruthy();
     }
 
     @Test('In white squares, Pawns cannot capture an empty square ')
-    testPawnCannotCaptureEmptySquare(): void {
+    testBlackPawnCannotCaptureEmptySquare(): void {
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
     @Test('In white squares, Pawns cannot capture pieces of the same color')
-    testPawnCannotCaptureSameColor(): void {
+    testBlackPawnCannotCaptureSameColor(): void {
         putPiece(chessboard, position.B6, pieces.blackKing);
         Expect(isMovePossible(chessboard, move.A7_B6)).not.toBeTruthy();
     }
 
     @Test('In white squares, Pawns can capture pieces of a different color')
-    testPawnCanCaptureDifferentColorPieces(): void {
+    testBlackPawnCanCaptureDifferentColorPieces(): void {
         putPiece(chessboard, position.B6, pieces.whitePawn);
         Expect(isMovePossible(chessboard, move.A7_B6)).toBeTruthy();
+    }
+}
+
+export class TestWhitePawnMovesInWhiteSquares {
+    @Setup
+    beforeEach(): void {
+        // For all test squares, prepare an empty board and add a single white pawn in A2
+        chessboard = createEmptyChessboard();
+        putPiece(chessboard, position.A2, pieces.whitePawn);
+    }
+
+    @Test('In white squares, Pawns can move forward')
+    testWhitePawnCanMoveForward(): void {
+        // TODO:
+    }
+
+    @Test('In white squares, Pawns cannot move backward')
+    testWhitePawnCannotMoveBackward(): void {
+        // TODO:
+    }
+
+    @Test('When in the initial position, paws can move 2 squares forward')
+    testWhitePawnInitialMove(): void {
+        // TODO:
+    }
+
+    @Test('When in the initial position, pawns cannot move 3 squares forward')
+    testWhitePawnCannotMoveThreeSquares(): void {
+        // TODO:
+    }
+
+    @Test('When in face of another piece, pawns cannot move forward')
+    testWhitePawnCannotMoveForwardToFullSquare(): void {
+        // TODO:
+    }
+
+    @Test('In white squares, Pawns cannot capture an empty square ')
+    testWhitePawnCannotCaptureEmptySquare(): void {
+        // TODO:
+    }
+
+    @Test('In white squares, Pawns cannot capture pieces of the same color')
+    testWhitePawnCannotCaptureSameColor(): void {
+        // TODO:
+    }
+
+    @Test('In white squares, Pawns can capture pieces of a different color')
+    testWhitePawnCanCaptureDifferentColorPieces(): void {
+        // TODO:
     }
 }

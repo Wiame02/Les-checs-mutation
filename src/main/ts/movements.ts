@@ -38,6 +38,7 @@ export function processMove(chessboard: Chessboard, moveString: string): boolean
 
     if (movement.isValid && isMovePossible(chessboard, movement)) {
         performMove(chessboard, movement);
+        chessboard.isWhiteMove = !chessboard.isWhiteMove;
     } else {
         console.log('Invalid movement !');
         return false;
@@ -84,6 +85,10 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
     }
     const piece: Piece = square.piece;
     const current: Position = movement.from;
+
+    if ((chessboard.isWhiteMove && !piece.isWhite) || (!chessboard.isWhiteMove && piece.isWhite)) {
+        return false;
+    }
 
     if (piece === pieces.blackKing || piece === pieces.whiteKing) {
         return isPossible.kingMove(chessboard, movement);

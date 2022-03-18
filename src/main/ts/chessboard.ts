@@ -46,7 +46,8 @@ export type Square = {
 export type Chessboard = {
     board: Array<Array<Square>>;
     nbCoups: number; //nombre de coups joués
-    historique: Array<Move>; //historique des coups (optionnel)
+    historique: Array<Move>; //historique des coups (optionnel),
+    isWhiteMove: boolean;
 };
 
 export function squareAtPosition(chessboard: Chessboard, position: Position): Square {
@@ -112,6 +113,7 @@ function createChessboard(): Chessboard {
         nbCoups: 0,
         board: board,
         historique: [],
+        isWhiteMove: true,
     };
     return newChessboard;
 }
