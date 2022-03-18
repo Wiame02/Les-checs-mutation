@@ -145,6 +145,5 @@ export function pawnInYellowSquareMove(board: Chessboard, move: Move): boolean {
         // Empty square or piece from other player
         return (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite));
     }
-    // #TODO: Implement this function
     return false;
 }
