@@ -90,7 +90,7 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
-    return true;
+    return (pawnInBlueSquareMove(board, move) || pawnInRedSquareMove(board, move));
 }
 
 /**
