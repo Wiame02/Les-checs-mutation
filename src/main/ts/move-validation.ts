@@ -76,8 +76,12 @@ export function whitePawnInWhiteSquareMove(board: Chessboard, move: Move): boole
  * @param move
  */
 export function kingMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
-    return true;
+    let gapFilePos : number = Math.abs(move.to.file - move.from.file);
+    let gapRankPos : number = Math.abs(move.to.rank - move.from.rank);
+    const current : Square = squareAtPosition(board, move.from)
+    const destination : Square = squareAtPosition(board, move.to);
+
+    return ((gapFilePos==1 || gapRankPos==1) && (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite)));
 }
 
 /**
