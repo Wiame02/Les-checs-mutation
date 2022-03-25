@@ -1,6 +1,6 @@
 import { Chessboard, isEmpty, Square, squareAtPosition } from './chessboard';
 import { Move } from './movements';
-import { equals, left, right, top, bottom } from './position';
+import { position, equals, left, right, top, bottom } from './position';
 
 /**
  * Checks whether a Black Pawn in a white square can perform a given move.
@@ -118,7 +118,20 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
  */
 export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
-    return true;
+    let gapFilePos : number = move.to.file - move.from.file;
+    let gapRankPos : number = move.to.rank - move.from.rank ;
+    let isMoveValid : boolean = true;
+
+    if(gapFilePos==gapRankPos && gapFilePos!=0){ //The movement is a diagonal and not null
+        let file : number = move.from.file;
+        let rank : number = move.from.rank;
+        while(file!=move.to.file && rank!=move.to.rank && isMoveValid){
+            if(gapFilePos>0){file++;}else{file--;}
+            if(gapRankPos>0){rank++;}else{rank--;}
+            if(!isEmpty(board,position(file,rank))){isMoveValid=false;}
+        }
+    }else{isMoveValid=false;}
+    return isMoveValid;
 }
 
 /**
