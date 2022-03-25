@@ -117,18 +117,17 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
     let gapFilePos : number = move.to.file - move.from.file;
     let gapRankPos : number = move.to.rank - move.from.rank ;
     let isMoveValid : boolean = true;
 
-    if(gapFilePos==gapRankPos && gapFilePos!=0){ //The movement is a diagonal and not null
+    if(Math.abs(gapFilePos)==Math.abs(gapRankPos) && gapFilePos!=0){ //The movement is a diagonal and not null
         let file : number = move.from.file;
         let rank : number = move.from.rank;
         while(file!=move.to.file && rank!=move.to.rank && isMoveValid){
             if(gapFilePos>0){file++;}else{file--;}
             if(gapRankPos>0){rank++;}else{rank--;}
-            if(!isEmpty(board,position(file,rank))){isMoveValid=false;}
+            isMoveValid=isEmpty(board,position(file,rank));
         }
     }else{isMoveValid=false;}
     return isMoveValid;
