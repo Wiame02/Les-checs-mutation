@@ -30,7 +30,7 @@ export class TestPawnInRedSquareMoves {
     @Test('In a red square, a Pawn cannot move diagonally')
     testCannotMoveDiagonally(): void {
         const moveB4_A5 : Move  = move (position.B4,position.A5); 
-        Expect (isMovePossible(chessboard,moveB4_A5 )).toBeTruthy();
+        Expect (isMovePossible(chessboard,moveB4_A5 )).not.toBeTruthy();
     }
 
     @Test('In a red square, a Pawn can capture a piece from different color')
