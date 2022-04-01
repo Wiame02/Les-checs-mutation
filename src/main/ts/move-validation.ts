@@ -107,15 +107,28 @@ export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
-   if (( move.from.file != move.to.file && move.from.rank  == move.to.rank ) ||
-   ( move.from.file == move.to.file && move.from.rank  != move.to.rank) )  {
+    let gapFilePos: number = move.to.file - move.from.file;
+    let gapRankPos: number = move.to.rank - move.from.rank;
+    let isMoveValid: boolean = true;
+
+    if ((move.from.file != move.to.file && move.from.rank == move.to.rank) ||
+        (move.from.file == move.to.file && move.from.rank != move.to.rank)) {
+        let file: number = move.from.file;
+        let rank: number = move.from.rank;
+        while (file != move.to.file && rank != move.to.rank && isMoveValid) {
+            if (gapFilePos > 0) { file++; } else { file--; }
+            if (gapRankPos > 0) { rank++; } else { rank--; }
+            isMoveValid = isEmpty(board, position(file, rank));
+        }
+    } else { isMoveValid = false; }
+    return isMoveValid;
+}
 
 
-   }
-    
-    
 
-    return true 
+
+
+
 
 /**
  * Checks whether a Pawn in a blue square can perform a given move.
@@ -166,16 +179,16 @@ export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInYellowSquareMove(board: Chessboard, move: Move): boolean {
-    let gapFilePos : number = Math.abs(move.to.file - move.from.file);
-    let gapRankPos : number = Math.abs(move.to.rank - move.from.rank);
+    let gapFilePos: number = Math.abs(move.to.file - move.from.file);
+    let gapRankPos: number = Math.abs(move.to.rank - move.from.rank);
 
     // Valid Movement
-    if ((gapFilePos===1 && gapRankPos===2) || (gapFilePos===2 && gapRankPos===1)) {
-        const current : Square = squareAtPosition(board, move.from)
-        const destination : Square = squareAtPosition(board, move.to);
+    if ((gapFilePos === 1 && gapRankPos === 2) || (gapFilePos === 2 && gapRankPos === 1)) {
+        const current: Square = squareAtPosition(board, move.from)
+        const destination: Square = squareAtPosition(board, move.to);
 
         // Empty square or piece from other player
-        return (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite));
+        return (destination.isEmpty || (destination.piece.isWhite !== current.piece.isWhite));
     }
     return false;
 }
