@@ -122,7 +122,7 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
         let rank: number = move.from.rank;
         const current : Square = squareAtPosition(board, move.from)
         const destination : Square = squareAtPosition(board, move.to);
-        while (((file != move.to.file && rank == move.to.rank) || (rank != move.to.rank && file == move.to.rank)) && isMoveValid) {
+        while (((file != move.to.file && rank == move.to.rank) || (rank != move.to.rank && file == move.to.file)) && isMoveValid) {
             if (gapFilePos > 0) { file++; } else if (gapFilePos < 0 ) { file--;}
             if (gapRankPos > 0) { rank++; } else if  (gapRankPos < 0 ) {rank--;}
             isEmptySquare = isEmpty(board, position(file, rank));
