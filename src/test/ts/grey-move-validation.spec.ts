@@ -60,7 +60,7 @@ export class TestPawnInGreySquareMoves {
     @Test('In a grey square, a Pawn can capure pieces from a different color')
     testCanCaptureDifferentColor(): void {
         putPiece(chessboard, position.H1, pieces.blackPawn);
-        Expect(isMovePossible(chessboard, D1_H1)).not.toBeTruthy();
+        Expect(isMovePossible(chessboard, D1_H1)).toBeTruthy();
     }
 }
  
