@@ -103,9 +103,15 @@ export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
-    return true;
-}
+   if (( move.from.file != move.to.file && move.from.rank  == move.to.rank ) ||
+   ( move.from.file == move.to.file && move.from.rank  != move.to.rank) )  {
+
+
+   }
+    
+    
+
+    return true 
 
 /**
  * Checks whether a Pawn in a blue square can perform a given move.
