@@ -7,14 +7,14 @@ import { isMovePossible, Move, move } from "../../main/ts/movements";
 let chessboard: Chessboard;
 
 // Valid movements
-    // Diagonally movements
-const D1_A4 : Move = move(position.D1, position.A4);
-    // Horizontal movements
-const D1_H1 : Move = move(position.D1, position.H1);
-    // Vertical movements
-const D1_D8 : Move = move(position.D1, position.D8);
+// Diagonally movements
+const D1_A4: Move = move(position.D1, position.A4);
+// Horizontal movements
+const D1_H1: Move = move(position.D1, position.H1);
+// Vertical movements
+const D1_D8: Move = move(position.D1, position.D8);
 // Invalid movements
-const D1_E3 : Move = move(position.D1, position.E3);
+const D1_E3: Move = move(position.D1, position.E3);
 
 export class TestPawnInGreySquareMoves {
     @Setup
@@ -62,4 +62,3 @@ export class TestPawnInGreySquareMoves {
         Expect(isMovePossible(chessboard, D1_H1)).toBeTruthy();
     }
 }
- 
