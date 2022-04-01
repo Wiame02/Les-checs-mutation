@@ -49,7 +49,7 @@ export class TestPawnInRedSquareMoves {
 
     @Test('In a red square, a Pawn cannot leap other pieces, when moving horizontally')
     testCannotLeapHorizontally(): void {
-        const moveB4_D4 : Move  = move (position.B4,position.A4); 
+        const moveB4_D4 : Move  = move (position.B4,position.D4); 
         putPiece(chessboard, position.C4, pieces.whitePawn);
         Expect(isMovePossible(chessboard, moveB4_D4)).not.toBeTruthy();
     }
