@@ -7,12 +7,12 @@ import { isMovePossible, Move, move } from "../../main/ts/movements";
 let chessboard: Chessboard;
 
 // Valid movements
-const E4_H7 : Move = move(position.E4, position.H7);
-const E4_G6 : Move = move(position.E4, position.G6);
+const E4_H7: Move = move(position.E4, position.H7);
+const E4_G6: Move = move(position.E4, position.G6);
 
 // Invalid movements
-const E4_E5 : Move = move(position.E4,position.E5);
-const E4_A4 : Move = move(position.E4,position.A4);
+const E4_E5: Move = move(position.E4, position.E5);
+const E4_A4: Move = move(position.E4, position.A4);
 
 export class TestPawnMovesInBlueSquares {
 
@@ -20,7 +20,7 @@ export class TestPawnMovesInBlueSquares {
     beforeEach(): void {
         // For all test squares, prepare an empty board and put a White Bishop in E4 (blue square)
         chessboard = createEmptyChessboard();
-        putPiece(chessboard,position.E4,pieces.whitePawn)
+        putPiece(chessboard, position.E4, pieces.whitePawn)
     }
 
     @Test('In a blue square, a Pawn can move diagonally')
@@ -30,12 +30,12 @@ export class TestPawnMovesInBlueSquares {
 
     @Test('In a blue square, a Pawn cannot move horizontally')
     testCannotMoveHorizontally(): void {
-        Expect(isMovePossible(chessboard,E4_E5)).not.toBeTruthy();
+        Expect(isMovePossible(chessboard, E4_E5)).not.toBeTruthy();
     }
 
     @Test('In a blue square, a Pawn cannot move vertically')
     testCannotMoveVertically(): void {
-        Expect(isMovePossible(chessboard,E4_A4)).not.toBeTruthy();
+        Expect(isMovePossible(chessboard, E4_A4)).not.toBeTruthy();
     }
 
     @Test('In a blue square, a Pawn can capture a piece from another color')
@@ -52,7 +52,7 @@ export class TestPawnMovesInBlueSquares {
 
     @Test('In a blue square, a Pawn cannot leap other pieces')
     testCannotLeapDiagonally(): void {
-        putPiece(chessboard,position.G6,pieces.whitePawn);
-        Expect(isMovePossible(chessboard,E4_H7)).not.toBeTruthy();
+        putPiece(chessboard, position.G6, pieces.whitePawn);
+        Expect(isMovePossible(chessboard, E4_H7)).not.toBeTruthy();
     }
 }

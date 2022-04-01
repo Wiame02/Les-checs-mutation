@@ -76,12 +76,12 @@ export function whitePawnInWhiteSquareMove(board: Chessboard, move: Move): boole
  * @param move
  */
 export function kingMove(board: Chessboard, move: Move): boolean {
-    let gapFilePos : number = Math.abs(move.to.file - move.from.file);
-    let gapRankPos : number = Math.abs(move.to.rank - move.from.rank);
-    const current : Square = squareAtPosition(board, move.from)
-    const destination : Square = squareAtPosition(board, move.to);
+    let gapFilePos: number = Math.abs(move.to.file - move.from.file);
+    let gapRankPos: number = Math.abs(move.to.rank - move.from.rank);
+    const current: Square = squareAtPosition(board, move.from)
+    const destination: Square = squareAtPosition(board, move.to);
 
-    return ((gapFilePos==1 || gapRankPos==1) && (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite)));
+    return ((gapFilePos == 1 || gapRankPos == 1) && (destination.isEmpty || (destination.piece.isWhite !== current.piece.isWhite)));
 }
 
 /**
@@ -94,9 +94,7 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
-    const current : Square = squareAtPosition(board, move.from)
-    const destination : Square = squareAtPosition(board, move.to);
-    return ((pawnInBlueSquareMove(board, move) || pawnInRedSquareMove(board, move)) && (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite)));
+    return (pawnInBlueSquareMove(board, move) || pawnInRedSquareMove(board, move));
 }
 
 /**
@@ -112,34 +110,30 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
     let gapFilePos: number = move.to.file - move.from.file;
     let gapRankPos: number = move.to.rank - move.from.rank;
     let isMoveValid: boolean = true;
-    let isEmptySquare : boolean;
-    let isDestination : boolean;
-    let isNotSameColor : boolean;
+    let isEmptySquare: boolean;
+    let isDestination: boolean;
+    let isNotSameColor: boolean;
 
-    if ((move.from.file != move.to.file && move.from.rank == move.to.rank) ||
-        (move.from.file == move.to.file && move.from.rank != move.to.rank)) {
+    if ((gapFilePos != 0 && gapRankPos == 0) || (gapFilePos == 0 && gapRankPos != 0)) { // The movement is vertical or horizontal
         let file: number = move.from.file;
         let rank: number = move.from.rank;
-        const current : Square = squareAtPosition(board, move.from)
-        const destination : Square = squareAtPosition(board, move.to);
+
+        const current: Square = squareAtPosition(board, move.from)
+        const destination: Square = squareAtPosition(board, move.to);
+        
         while (((file != move.to.file && rank == move.to.rank) || (rank != move.to.rank && file == move.to.file)) && isMoveValid) {
-            if (gapFilePos > 0) { file++; } else if (gapFilePos < 0 ) { file--;}
-            if (gapRankPos > 0) { rank++; } else if  (gapRankPos < 0 ) {rank--;}
+            if (gapFilePos > 0) { file++; } else if (gapFilePos < 0) { file--; }    // gapFile > 0 : to the top; gapFile < 0 : to the bottom
+            if (gapRankPos > 0) { rank++; } else if (gapRankPos < 0) { rank--; }    // gapRank > 0 : to the right; gapRank < 0 : to the left
+
             isEmptySquare = isEmpty(board, position(file, rank));
-            isDestination = file==move.to.file && rank==move.to.rank;
-            isNotSameColor = destination.piece.isWhite!=current.piece.isWhite;
+            isDestination = file == move.to.file && rank == move.to.rank;
+            isNotSameColor = destination.piece.isWhite != current.piece.isWhite;
 
             isMoveValid = (isEmptySquare || (isDestination && isNotSameColor));
         }
     } else { isMoveValid = false; }
     return isMoveValid;
 }
-
-
-
-
-
-
 
 /**
  * Checks whether a Pawn in a blue square can perform a given move.
@@ -151,29 +145,31 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInBlueSquareMove(board: Chessboard, move: Move): boolean {
-    let gapFilePos : number = move.to.file - move.from.file;
-    let gapRankPos : number = move.to.rank - move.from.rank ;
-    let isMoveValid : boolean = true;
-    let isEmptySquare : boolean;
-    let isDestination : boolean;
-    let isNotSameColor : boolean;
+    let gapFilePos: number = move.to.file - move.from.file;
+    let gapRankPos: number = move.to.rank - move.from.rank;
+    let isMoveValid: boolean = true;
+    let isEmptySquare: boolean;
+    let isDestination: boolean;
+    let isNotSameColor: boolean;
 
-    if(Math.abs(gapFilePos)==Math.abs(gapRankPos) && gapFilePos!=0){ //The movement is a diagonal and not null
-        let file : number = move.from.file;
-        let rank : number = move.from.rank;
-        const current : Square = squareAtPosition(board, move.from)
-        const destination : Square = squareAtPosition(board, move.to);
-        while(file!=move.to.file && rank!=move.to.rank && isMoveValid){
-            if(gapFilePos>0){file++;}else{file--;}
-            if(gapRankPos>0){rank++;}else{rank--;}
+    if (Math.abs(gapFilePos) == Math.abs(gapRankPos) && gapFilePos != 0) { //The movement is a diagonal and not null
+        let file: number = move.from.file;
+        let rank: number = move.from.rank;
 
-            isEmptySquare = isEmpty(board,position(file,rank));
-            isDestination = file==move.to.file && rank==move.to.rank;
-            isNotSameColor = destination.piece.isWhite!=current.piece.isWhite;
+        const current: Square = squareAtPosition(board, move.from)
+        const destination: Square = squareAtPosition(board, move.to);
+
+        while (file != move.to.file && rank != move.to.rank && isMoveValid) {
+            if (gapFilePos > 0) { file++; } else { file--; }
+            if (gapRankPos > 0) { rank++; } else { rank--; }
+
+            isEmptySquare = isEmpty(board, position(file, rank));
+            isDestination = file == move.to.file && rank == move.to.rank;
+            isNotSameColor = destination.piece.isWhite != current.piece.isWhite;
 
             isMoveValid = (isEmptySquare || (isDestination && isNotSameColor));
         }
-    }else{isMoveValid=false;}
+    } else { isMoveValid = false; }
     return isMoveValid;
 }
 
@@ -193,7 +189,7 @@ export function pawnInYellowSquareMove(board: Chessboard, move: Move): boolean {
     let gapFilePos: number = Math.abs(move.to.file - move.from.file);
     let gapRankPos: number = Math.abs(move.to.rank - move.from.rank);
 
-    // Valid Movement
+    // Movement valid with a shape of an L
     if ((gapFilePos === 1 && gapRankPos === 2) || (gapFilePos === 2 && gapRankPos === 1)) {
         const current: Square = squareAtPosition(board, move.from)
         const destination: Square = squareAtPosition(board, move.to);

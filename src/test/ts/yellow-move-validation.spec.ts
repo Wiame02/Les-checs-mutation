@@ -7,22 +7,22 @@ import { isMovePossible, Move, move } from "../../main/ts/movements";
 let chessboard: Chessboard;
 
 // Valid movements
-    // Two horizontal - One vertical
-const D3_F4 : Move = move(position.D3, position.F4);
-const D3_F2 : Move = move(position.D3, position.F2);
-const D3_B4 : Move = move(position.D3, position.B4);
-const D3_B2 : Move = move(position.D3, position.B2);
+// Two horizontal - One vertical
+const D3_F4: Move = move(position.D3, position.F4);
+const D3_F2: Move = move(position.D3, position.F2);
+const D3_B4: Move = move(position.D3, position.B4);
+const D3_B2: Move = move(position.D3, position.B2);
 
-    // One horizontal - Two vertical
-const D3_C5 : Move = move(position.D3, position.C5);
-const D3_E5 : Move = move(position.D3, position.E5);
-const D3_C1 : Move = move(position.D3, position.C1);
-const D3_E1 : Move = move(position.D3, position.E1);
+// One horizontal - Two vertical
+const D3_C5: Move = move(position.D3, position.C5);
+const D3_E5: Move = move(position.D3, position.E5);
+const D3_C1: Move = move(position.D3, position.C1);
+const D3_E1: Move = move(position.D3, position.E1);
 
 // Invalid movements
-const D3_F3 : Move = move(position.D3, position.F3);
-const D3_D5 : Move = move(position.D3, position.D5);
-const D3_F5 : Move = move(position.D3, position.F5);
+const D3_F3: Move = move(position.D3, position.F3);
+const D3_D5: Move = move(position.D3, position.D5);
+const D3_F5: Move = move(position.D3, position.F5);
 
 export class TestPawnInYellowSquareMoves {
     @Setup

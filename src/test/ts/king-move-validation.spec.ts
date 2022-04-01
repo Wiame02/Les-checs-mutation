@@ -7,9 +7,9 @@ import * as pieces from '../../main/ts/piece';
 let chessboard: Chessboard;
 
 //Valid Movements
-const D1_D2 : Move = move(position.D1, position.D2);
+const D1_D2: Move = move(position.D1, position.D2);
 //Invalid movements
-const D1_D3 : Move = move(position.D1, position.D3);
+const D1_D3: Move = move(position.D1, position.D3);
 
 export class TestKingMoves {
     @Setup
@@ -20,12 +20,12 @@ export class TestKingMoves {
 
     @Test('A King can move 1 square in all directions')
     testCanMoveOneSquare(): void {
-        Expect(isMovePossible(chessboard,D1_D2)).toBeTruthy();
+        Expect(isMovePossible(chessboard, D1_D2)).toBeTruthy();
     }
 
     @Test('A King cannot move more than 1 square')
     testCannotMoveMoreThanOneSquare(): void {
-        Expect(isMovePossible(chessboard,D1_D3)).not.toBeTruthy();
+        Expect(isMovePossible(chessboard, D1_D3)).not.toBeTruthy();
     }
 
     @Test('A King cannot capure pieces from the same color')

@@ -107,8 +107,8 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
     if (position.isYellowPosition(current)) {
         return isPossible.pawnInYellowSquareMove(chessboard, movement);
     }
-    if(position.isBluePosition(current)){
-        return isPossible.pawnInBlueSquareMove(chessboard,movement);
+    if (position.isBluePosition(current)) {
+        return isPossible.pawnInBlueSquareMove(chessboard, movement);
     }
     if (position.isGreyPosition(current)) {
         return isPossible.pawnInGreySquareMove(chessboard, movement);
