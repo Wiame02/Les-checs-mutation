@@ -71,41 +71,44 @@ export class TestWhitePawnMovesInWhiteSquares {
 
     @Test('In white squares, Pawns can move forward')
     testWhitePawnCanMoveForward(): void {
-        // TODO:
+        Expect(isMovePossible(chessboard,move.A2_A3)).toBeTruthy;
     }
 
     @Test('In white squares, Pawns cannot move backward')
     testWhitePawnCannotMoveBackward(): void {
-        // TODO:
+        Expect(isMovePossible(chessboard,move.A2_A1)).not.toBeTruthy;
     }
 
     @Test('When in the initial position, paws can move 2 squares forward')
     testWhitePawnInitialMove(): void {
-        // TODO:
+        Expect(isMovePossible(chessboard,move.A2_A4)).toBeTruthy;
     }
 
     @Test('When in the initial position, pawns cannot move 3 squares forward')
     testWhitePawnCannotMoveThreeSquares(): void {
-        // TODO:
+        Expect(isMovePossible(chessboard,move.A2_A5)).not.toBeTruthy;
     }
 
     @Test('When in face of another piece, pawns cannot move forward')
     testWhitePawnCannotMoveForwardToFullSquare(): void {
-        // TODO:
+        putPiece(chessboard, position.A3, pieces.blackPawn);
+        Expect(isMovePossible(chessboard,move.A2_A3)).not.toBeTruthy;
     }
 
     @Test('In white squares, Pawns cannot capture an empty square ')
     testWhitePawnCannotCaptureEmptySquare(): void {
-        // TODO:
+        Expect(isMovePossible(chessboard,move.A2_B3)).not.toBeTruthy;
     }
 
     @Test('In white squares, Pawns cannot capture pieces of the same color')
     testWhitePawnCannotCaptureSameColor(): void {
-        // TODO:
+        putPiece(chessboard, position.B3, pieces.whitePawn);
+        Expect(isMovePossible(chessboard,move.A2_B3)).not.toBeTruthy;
     }
 
     @Test('In white squares, Pawns can capture pieces of a different color')
     testWhitePawnCanCaptureDifferentColorPieces(): void {
-        // TODO:
+        putPiece(chessboard, position.B3, pieces.blackPawn);
+        Expect(isMovePossible(chessboard,move.A2_B3)).toBeTruthy;
     }
 }
