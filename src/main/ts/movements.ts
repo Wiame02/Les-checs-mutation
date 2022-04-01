@@ -101,14 +101,18 @@ export function isMovePossible(chessboard: Chessboard, movement: Move): boolean 
             return isPossible.blackPawnInWhiteSquareMove(chessboard, movement);
         }
     }
-    // TODO: Red position
+    if (position.isRedPosition(current)) {
+        return isPossible.pawnInRedSquareMove(chessboard, movement);
+    }
     if (position.isYellowPosition(current)) {
         return isPossible.pawnInYellowSquareMove(chessboard, movement);
     }
     if(position.isBluePosition(current)){
         return isPossible.pawnInBlueSquareMove(chessboard,movement);
     }
-    // TODO: Grey position
+    if (position.isGreyPosition(current)) {
+        return isPossible.pawnInGreySquareMove(chessboard, movement);
+    }
     return false;
 }
 

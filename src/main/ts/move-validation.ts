@@ -94,7 +94,9 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function pawnInGreySquareMove(board: Chessboard, move: Move): boolean {
-    return (pawnInBlueSquareMove(board, move) || pawnInRedSquareMove(board, move));
+    const current : Square = squareAtPosition(board, move.from)
+    const destination : Square = squareAtPosition(board, move.to);
+    return ((pawnInBlueSquareMove(board, move) || pawnInRedSquareMove(board, move)) && (destination.isEmpty || (destination.piece.isWhite!==current.piece.isWhite)));
 }
 
 /**
@@ -110,15 +112,24 @@ export function pawnInRedSquareMove(board: Chessboard, move: Move): boolean {
     let gapFilePos: number = move.to.file - move.from.file;
     let gapRankPos: number = move.to.rank - move.from.rank;
     let isMoveValid: boolean = true;
+    let isEmptySquare : boolean;
+    let isDestination : boolean;
+    let isNotSameColor : boolean;
 
     if ((move.from.file != move.to.file && move.from.rank == move.to.rank) ||
         (move.from.file == move.to.file && move.from.rank != move.to.rank)) {
         let file: number = move.from.file;
         let rank: number = move.from.rank;
+        const current : Square = squareAtPosition(board, move.from)
+        const destination : Square = squareAtPosition(board, move.to);
         while (file != move.to.file && rank != move.to.rank && isMoveValid) {
-            if (gapFilePos > 0) { file++; } else { file--; }
-            if (gapRankPos > 0) { rank++; } else { rank--; }
-            isMoveValid = isEmpty(board, position(file, rank));
+            if (gapFilePos > 0) { file++; } else if (gapFilePos < 0 ) { file--;}
+            if (gapRankPos > 0) { rank++; } else if  (gapRankPos < 0 ) {rank--;}
+            isEmptySquare = isEmpty(board, position(file, rank));
+            isDestination = file==move.to.file && rank==move.to.rank;
+            isNotSameColor = destination.piece.isWhite!=current.piece.isWhite;
+
+            isMoveValid = (isEmptySquare || (isDestination && isNotSameColor));
         }
     } else { isMoveValid = false; }
     return isMoveValid;
